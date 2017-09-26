@@ -1,0 +1,14 @@
+
+@media (max-width: 951px) {
+
+    .w3-main {
+        padding-left: 0 !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .row.equal {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

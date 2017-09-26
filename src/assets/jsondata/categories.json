@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Sedan",
+    "iconCssClass": "limousine"
+  },
+  {
+    "id": 2,
+    "name": "Coupe",
+    "iconCssClass": "sportsCar"
+  },
+  {
+    "id": 5,
+    "name": "VAN",
+    "iconCssClass": "van"
+  },
+  {
+    "id": 6,
+    "name": "Sports car",
+    "iconCssClass": "sportsCar"
+  },
+  {
+    "id": 7,
+    "name": "Cabriolet",
+    "iconCssClass": "cabrio"
+  },
+  {
+    "id": 8,
+    "name": "Small car",
+    "iconCssClass": "smallCar"
+  },
+  {
+    "id": 9,
+    "name": "Estate",
+    "iconCssClass": "estateCar"
+  },
+  {
+    "id": 10,
+    "name": "Offroad",
+    "iconCssClass": "offRoad"
+  }
+]

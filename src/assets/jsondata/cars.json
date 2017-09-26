@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "Description": "",
+    "registrationNumber": "SC79Z",
+    "brand": "BMW",
+    "model": "X1",
+    "year": 2017,
+    "miles": 267287,
+    "price": 489900,
+    "color": "white",
+    "sold": true,
+    "sellerId": 2,
+    "soldDate": "2017-08-20T16:05:43Z",
+    "soldPrice": "509000",
+    "buyerId": 6,
+    "createdDate": "2017-09-20T22:05:43Z",
+    "updatedDate": "2017-08-20T16:05:43Z"
+  },
+  {
+    "id": 2,
+    "description": "",
+    "year": 2014,
+    "price": 189900,
+    "miles": 3603787,
+
+    "registrationNumber": "MTD37A",
+    "brand": "Mercedes",
+    "model": "S500",
+    "color": "black",
+    "sold": false,
+    "sellerId": 4,
+    "soldDate": null,
+    "soldPrice": null,
+    "buyerId": null,
+    "createdDate": "2017-09-20T22:05:43Z",
+    "updatedDate": "2017-08-20T16:05:43Z"
+  }
+]

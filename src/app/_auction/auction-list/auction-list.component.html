@@ -1,0 +1,60 @@
+﻿<div class="w3-container">
+  <div class="row equal">
+
+    <div class="col-md-6 mb-4" *ngFor="let car of carsAsync | async | auctionFilter: _filter"
+         style="padding: 15px; background-color: transparent">
+      <div class="w3-card-4 w3-hover-shadow" id="auction_{{car.id}}" style="padding: 15px;">
+         <div class="w3-container" style="padding: 5px;">
+          <a [routerLink]="['details', car.id]">
+            <img class="img-responsive" src="{{car.imagePath}}" alt=""></a>
+          <div class="w3-container">
+            <h4 class="card-title">
+              <a [routerLink]="['details', car.id]" href="#">{{car.description}}</a>
+            </h4>
+          </div>
+        </div>
+        <div class="w3-container" style="padding: 0;margin-bottom: 15px;">
+
+          <table class="table-responsive" style="width: 100%">
+            <tr style="font-size: small">
+              <td class="w3-center w3-border-bottom">
+                Year
+              </td>
+              <td class="w3-center w3-border-bottom">
+                Maker
+              </td>
+              <td class="w3-center w3-border-bottom">
+                Price
+              </td>
+            </tr>
+            <tr style="font-size: small">
+              <td class="w3-border-right" style="width: 33%">
+
+                <div class="w3-center">
+                  {{car.year}}
+                </div>
+              </td>
+              <td class="w3-border-right" style="width: 33%">
+                <div class="w3-center">
+                  {{car.brand}}
+                </div>
+              </td>
+              <td class="" style="width: 33%">
+                <div class="w3-center">
+                  {{car.price}}:-
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="w3-container" style="padding: 0;">
+          <a class="w3-btn w3-blue w3-hover-shadow w3-show-block w3-btn-block"
+             [routerLink]="['details', car.id]">
+            Details
+          </a>
+        </div>
+        <div class="clear w3-clear"></div>
+      </div>
+    </div>
+  </div>
+</div>

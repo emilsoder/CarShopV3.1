@@ -1,0 +1,38 @@
+[
+  {
+    "color": "White",
+    "cssClassName": "w3-white"
+  },
+  {
+    "color": "Blue",
+    "cssClassName": "w3-blue"
+  },
+  {
+    "color": "Black",
+    "cssClassName": "w3-black"
+  },
+  {
+    "color": "Green",
+    "cssClassName": "w3-green"
+  },
+  {
+    "color": "Red",
+    "cssClassName": "w3-red"
+  },
+  {
+    "color": "Silver",
+    "cssClassName": "w3-light-gray"
+  },
+  {
+    "color": "Brown",
+    "cssClassName": "w3-brown"
+  },
+  {
+    "color": "Grey",
+    "cssClassName": "w3-gray"
+  },
+  {
+    "color": "Other",
+    "cssClassName": "checkbox-color-other"
+  }
+]
