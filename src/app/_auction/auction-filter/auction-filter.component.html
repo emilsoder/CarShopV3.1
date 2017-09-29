@@ -1,264 +1,151 @@
-<div class="w3-card-2 w3-animate-opacity" id="mySidebar" style="min-width: 210px">
+<div class="w3-card-2 w3-animate-opacity"
+     id="mySidebar">
+     <!--style="min-width: 210px">-->
 
   <div class="w3-button w3-block w3-blue w3-bar-item w3-left-align auction-filter-toggle-panel-btn"
        id="auction-filter-toggle-panel-btn">
     <i class="glyphicon glyphicon-filter w3-right-align auction-filter-toggle-panel-glyphicon"></i> Filter
   </div>
-  <div class="auction-filter-panel-body collapse in" id="auction-filter-panel-body" style="">
+  <div class="auction-filter-panel-body collapse in" id="auction-filter-panel-body">
 
-    <div class="panel panel-default w3-bar-item">
-      <div class="panel-heading filter-sidebar-item-header">
-        <div class="w3-button w3-block w3-grey w3-left-align toggle-mini-menu">
-          Categories<i class="glyphicon glyphicon-menu-right w3-right-align"></i>
-        </div>
-      </div>
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Colors
+        </md-panel-title>
+      </md-expansion-panel-header>
+      <md-selection-list #col
+                         style="max-height: 350px; overflow-y: scroll;">
+        <md-list-option *ngFor="let color of colors | async"
+                        (click)="setColors(color.color)">
+          {{color.color}}
+        </md-list-option>
+      </md-selection-list>
+    </md-expansion-panel>
 
-      <div class="icon-panel panel-collapse panel-body collapse w3-card-4 filter-sidebar-item-collapse-panel">
-        <ul style="height: 0;">
-          <li>
-            <div class="container-fluid row" style="padding-bottom: 20px;">
-              <div *ngFor="let category of categories | async" class="col-xs-4 category-icon" align="center">
-                <div class="box" (click)="setModels(category.name)">
-                  <i class="icon-button {{category.iconCssClass}}"></i>
-                  <p class="icon-title text-center">{{category.name}}</p>
-                  <span class="hidden" id="{{category.id}}"></span>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <md-expansion-panel style="padding: 0">
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Makers
+        </md-panel-title>
+      </md-expansion-panel-header>
 
-    <div class="panel panel-default w3-bar-item">
-      <div class="panel-heading filter-sidebar-item-header">
-        <div class="w3-button w3-block w3-grey w3-left-align toggle-mini-menu w3-i">Makers
-          <i class="glyphicon glyphicon-menu-right w3-right-align"></i></div>
-      </div>
-      <div class="icon-panel panel-collapse panel-body collapse w3-card-4 filter-sidebar-item-collapse-panel brands">
-        <ul>
-          <li>
-            <div class="form-group" *ngFor="let maker of makers | async | orderBy"
-                 style="margin: 0;">
-              <input (change)="setBrand(maker.name.toLowerCase() + '_' + maker.id, maker.name.toLowerCase())"
-                     class="checkbox-brand"
-                     type="checkbox"
-                     name="{{maker.name.toLowerCase() + '_' + maker.id}}"
-                     id="{{maker.name.toLowerCase() + '_' + maker.id}}"
-                     autocomplete="off"/>
+      <md-selection-list>
+        <md-list-option [disabled]="brandsChecked.selectedOptions.selected.length <= 0"
+                        [selected]="brandsChecked.selectedOptions.selected.length <= 0"
+                        (click)="brandsChecked.deselectAll();setBrand('any')"
+                        style="padding-right: 17px">
+          Any
+        </md-list-option>
+      </md-selection-list>
 
-              <div class="btn-group btn-group-colors">
-                <label for="{{maker.name.toLowerCase() + '_' + maker.id}}"
-                       class="btn btn-default" style="width: 20%;">
-                  <span class="glyphicon glyphicon-ok"></span>
-                  <span></span>
-                </label>
-                <label for="{{maker.name.toLowerCase() + '_' + maker.id}}"
-                       class="btn btn-default active cb"
-                       style="width:78%">
-                  {{maker.name}}
-                </label>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="panel panel-default w3-bar-item">
-      <div class="panel-heading filter-sidebar-item-header">
-        <div class="w3-button w3-block w3-grey w3-left-align toggle-mini-menu w3-i">Colors
-          <i class="glyphicon glyphicon-menu-right w3-right-align"></i></div>
-      </div>
-      <div class="icon-panel panel-collapse panel-body collapse w3-card-4 filter-sidebar-item-collapse-panel">
-        <ul>
-          <li>
-            <div class="form-group" *ngFor="let color of colors | async" style="margin: 0;">
-              <input (change)="setColors('checkbox_' + color.cssClassName, color.color)"
-                     type="checkbox"
-                     name="checkbox_{{color.cssClassName}}"
-                     id="checkbox_{{color.cssClassName}}"
-                     autocomplete="off"/>
-              <div class="btn-group btn-group-colors">
-                <label for="checkbox_{{color.cssClassName}}"
-                       class="btn btn-success {{color.cssClassName}}" style="width: 20%;">
-                  <span class="glyphicon glyphicon-ok"></span>
-                  <span></span>
-                </label>
-                <label for="checkbox_{{color.cssClassName}}" class="btn btn-default active cb" style="width:80%">
-                  {{color.color}}
-                </label>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="panel panel-default w3-bar-item">
-      <div class="panel-heading filter-sidebar-item-header">
-        <div class="w3-button w3-block w3-grey w3-left-align toggle-mini-menu w3-i">Price range
-          <i class="glyphicon glyphicon-menu-right w3-right-align"></i></div>
-      </div>
-      <div class="icon-panel panel-collapse panel-body collapse w3-card-4 filter-sidebar-item-collapse-panel range">
-        <ul>
-          <li>
-            <div class="row">
+      <md-selection-list #brandsChecked
+                         style="max-height: 350px; overflow-y: scroll; padding: 0">
+        <md-list-option *ngFor="let brand of makers | async | orderBy"
+                        (click)="setBrand(brand.name.toLowerCase())">
+          {{brand.name}}
+        </md-list-option>
 
-              <div class="col-sm-12 col-xs-6">
-                <div class="row">
-                  <div class="col-sm-3 rangeLabel-col">
-                    <label for="c1" class="rangeLabel">From</label>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="input-group">
-                      <span class="input-group-addon">$</span>
-                      <input type="number" (change)="setPriceRange()"
-                             value="{{minPrice}}" [(ngModel)]="minPrice"
-                             step="100"
-                             min="0"
-                             data-number-to-fixed="2"
-                             data-number-stepfactor="100"
-                             class="form-control currency"
-                             id="c1"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      </md-selection-list>
 
-              <div class="col-sm-12 col-xs-6">
-                <div class="row">
-                  <div class="col-sm-3 rangeLabel-col">
-                    <label for="c2" class="rangeLabel">To</label>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="input-group">
-                      <span class="input-group-addon">$</span>
-                      <input type="number" (change)="setPriceRange(minPrice, maxPrice)"
-                             value="{{maxPrice}}" [(ngModel)]="maxPrice"
-                             step="100"
-                             min="0"
-                             data-number-to-fixed="2"
-                             data-number-stepfactor="100"
-                             class="form-control currency" id="c2"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!----------------------------------------->
+    </md-expansion-panel>
 
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="panel panel-default w3-bar-item">
-      <div class="panel-heading filter-sidebar-item-header">
-        <div class="w3-button w3-block w3-grey w3-left-align toggle-mini-menu w3-i">Registration
-          <i class="glyphicon glyphicon-menu-right w3-right-align"></i></div>
-      </div>
-      <div class="icon-panel panel-collapse panel-body collapse w3-card-4 filter-sidebar-item-collapse-panel range">
-        <ul>
-          <li>
-            <div class="row">
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        Price
+      </md-expansion-panel-header>
+      <md-selection-list>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   placeholder="Minimum"
+                   (change)="setPriceRange()"
+                   step="100"
+                   [(ngModel)]="minPrice"
+                   value="{{minPrice}}">
+            <span mdSuffix> &nbsp; SEK</span>
+          </md-form-field>
+        </md-list-item>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   placeholder="Maximum"
+                   (change)="setPriceRange()"
+                   step="100"
+                   [(ngModel)]="maxPrice"
+                   value="{{maxPrice}}">
+            <span mdSuffix> &nbsp; SEK</span>
+          </md-form-field>
+        </md-list-item>
+      </md-selection-list>
+    </md-expansion-panel>
 
-              <div class="col-sm-12 col-xs-6">
-                <div class="row">
-                  <div class="col-sm-3 rangeLabel-col">
-                    <label for="c4" class="rangeLabel">From</label>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="input-group">
-                      <input type="number" (change)="setYearRange()"
-                             value="{{minYear}}" [(ngModel)]="minYear"
-                             step="1"
-                             max="2019"
-                             min="1800"
-                             data-number-to-fixed="0"
-                             data-number-stepfactor="1"
-                             class="form-control"
-                             id="c4"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        Registration
+      </md-expansion-panel-header>
+      <md-selection-list>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   min="1800"
+                   placeholder="From"
+                   (change)="setYearRange()"
+                   step="1"
+                   [(ngModel)]="minYear"
+                   value="{{minYear}}">
+          </md-form-field>
+        </md-list-item>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   min="1800"
+                   placeholder="To"
+                   (change)="setYearRange()"
+                   step="1"
+                   [(ngModel)]="maxYear"
+                   value="{{maxYear}}">
+          </md-form-field>
+        </md-list-item>
+      </md-selection-list>
+    </md-expansion-panel>
 
-              <div class="col-sm-12 col-xs-6">
-                <div class="row">
-                  <div class="col-sm-3 rangeLabel-col">
-                    <label for="c2_2" class="rangeLabel">To</label>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="input-group">
-                      <input type="number" (change)="setYearRange()"
-                             value="{{maxYear}}" [(ngModel)]="maxYear"
-                             step="1"
-                             max="2019"
-                             min="1800"
-                             data-number-to-fixed="0"
-                             data-number-stepfactor="1"
-                             class="form-control" id="c2_2"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="panel panel-default w3-bar-item">
-      <div class="panel-heading filter-sidebar-item-header">
-        <div class="w3-button w3-block w3-grey w3-left-align toggle-mini-menu w3-i">Mileage
-          <i class="glyphicon glyphicon-menu-right w3-right-align"></i></div>
-      </div>
-      <div class="icon-panel panel-collapse panel-body collapse w3-card-4 filter-sidebar-item-collapse-panel range">
-        <ul>
-          <li>
-            <div class="row">
-
-              <div class="col-sm-12 col-xs-6">
-                <div class="row">
-                  <div class="col-sm-3 rangeLabel-col">
-                    <label for="c5" class="rangeLabel">From</label>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="input-group">
-                      <input type="number" (change)="setMileRange()"
-                             value="{{minMiles}}" [(ngModel)]="minMiles"
-                             step="1000"
-                             min="0"
-                             data-number-to-fixed="0"
-                             data-number-stepfactor="1000"
-                             class="form-control" id="c5"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-12 col-xs-6">
-                <div class="row">
-                  <div class="col-sm-3 rangeLabel-col">
-                    <label for="c6" class="rangeLabel">To</label>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="input-group">
-                      <input type="number" (change)="setMileRange()"
-                             value="{{maxMiles}}" [(ngModel)]="maxMiles"
-                             step="1000"
-                             min="0"
-                             data-number-to-fixed="1"
-                             data-number-stepfactor="1000"
-                             class="form-control" id="c6"/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        Mileage
+      </md-expansion-panel-header>
+      <md-selection-list>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   min="0"
+                   placeholder="From"
+                   (change)="setMileRange()"
+                   step="100"
+                   [(ngModel)]="minMiles"
+                   value="{{minMiles}}">
+            <span mdSuffix> &nbsp; miles</span>
+          </md-form-field>
+        </md-list-item>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   min="0"
+                   placeholder="To"
+                   (change)="setMileRange()"
+                   step="100"
+                   [(ngModel)]="maxMiles"
+                   value="{{maxMiles}}">
+            <span mdSuffix> &nbsp; miles</span>
+          </md-form-field>
+        </md-list-item>
+      </md-selection-list>
+    </md-expansion-panel>
   </div>
 </div>
-<!--min="{{minPrice}}"-->
-<!--min="{{minPrice}}"-->
-<!--max="{{maxPrice}}"-->

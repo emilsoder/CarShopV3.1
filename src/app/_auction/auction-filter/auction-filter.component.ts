@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {AuctionFilterService} from "../../_services/sidebar-filter.service";
 import {GlobalState} from "../../_shared/_global";
 import {AuctionFilterPipe} from "../../_pipes/auction-filter.pipe";
@@ -14,23 +14,26 @@ import {OrderByPipe} from "../../_pipes/orderby.pipe";
   providers: [OrderByPipe]
 })
 
+
 export class AuctionFilterComponent implements OnInit {
+
+
   public makers: any;
   public categories: any;
   public colors: any;
+
   minPrice: number = 0;
   maxPrice: number = 0;
   minYear: number = 0;
   maxYear: number = 0;
   minMiles: number = 0;
   maxMiles: number = 0;
+  selected = [];
+
 
   constructor(private filterService: AuctionFilterService, private _state: GlobalState) {
     this.setJqueryEvents();
     this.subscribeToFilterEvents();
-    if (AuctionFilterPipe.filterViewModel.brands.length <= 0) {
-      $("#any_0").prop("checked", true)
-    }
   }
 
   ngOnInit() {
@@ -81,27 +84,30 @@ export class AuctionFilterComponent implements OnInit {
     this._state.notifyDataChanged('filter', this._currentFilter);
   }
 
-  setColors(elementId: string, color: string) {
-    if (!$(`#${elementId}`).is(':checked'))
+  setColors(color: string) {
+    if (this._currentFilter.colors.find(x => x == color)) {
       this._currentFilter.colors = this._currentFilter.colors.filter(e => e !== color);
-    else this._currentFilter.colors.push(color);
+    } else {
+      this._currentFilter.colors.push(color);
+    }
+
     this._state.notifyDataChanged('filter', this._currentFilter);
   }
 
-  setBrand(elementId: string, brand: string) {
-    if (!$(`#${elementId}`).is(':checked')) {
-      this._currentFilter.brands = this._currentFilter.brands.filter(e => e.toLowerCase() !== brand.toLowerCase());
-      if (this._currentFilter.brands.length <= 0) {
-        $("#any_0").prop('checked', true);
-      }
-    } else {
-      if (brand !== "any") {
-        $("#any_0").prop('checked', false);
-        this._currentFilter.brands.push(brand.toLowerCase());
+  setBrand(brand: string) {
+
+    if (brand === 'any') {
+      this._currentFilter.brands = [];
+    }
+
+    else {
+      if (this._currentFilter.brands.find(x => x == brand)) {
+        this._currentFilter.brands = this._currentFilter.brands.filter(e => e !== brand);
       } else {
-        this._currentFilter.brands = [];
+        this._currentFilter.brands.push(brand);
       }
     }
+
     this._state.notifyDataChanged('filter', this._currentFilter);
   }
 
@@ -137,8 +143,9 @@ export class AuctionFilterComponent implements OnInit {
   }
 
   setJqueryEvents(): void {
+    let hasBeenCollapsed = 0;
     $(function () {
-      onWindowResize();
+      onWindowResize(false);
 
       $(".filter-sidebar-item-header").click(function () {
         $(this).parent().find(".panel-collapse")
@@ -161,7 +168,7 @@ export class AuctionFilterComponent implements OnInit {
       });
 
       $(window).resize(function () {
-        onWindowResize();
+        onWindowResize(true);
       });
 
       $("#btn-close-auction-filter").click(function () {
@@ -177,18 +184,32 @@ export class AuctionFilterComponent implements OnInit {
           $("#auction-filter-panel-body").collapse("toggle");
       });
 
-      function onWindowResize() {
+
+      function onWindowResize(isResizeEvent) {
         const windowWidth = $(window).width();
-        if (windowWidth < 973.33) {
-          $(".w3-main").css("padding-left", "0px");
-          $("#mySidebar").css("z-index", 1)
+
+        if (windowWidth < 750) {
+          $(".auction-filter-panel-body").collapse("hide");
+          hasBeenCollapsed = 1;
+        } else if (windowWidth > 750) {
+          $(".auction-filter-panel-body").collapse("show");
+          hasBeenCollapsed = 0;
         }
-        else if (windowWidth > 973.33) {
+        if (windowWidth < 900) {
+          $(".w3-main").css("padding-left", "0px");
+          $("#mySidebar").css("z-index", 1);
+        }
+        else if (windowWidth > 900) {
+          hasBeenCollapsed = 0;
+          $("#mySidebar").css("display", "block");
           $(".w3-main").css("padding-left", "300px");
-          $("#mySidebar").css("z-index", 0)
+          $("#mySidebar").css("z-index", 0);
+          $(".auction-filter-panel-body").collapse("show");
         }
       }
     });
   }
 }
 
+// if (windowWidth < 973.33) {
+// 13

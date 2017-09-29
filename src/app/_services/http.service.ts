@@ -14,9 +14,10 @@ export class HttpService {
     return this.http.get(actionEndpoint);
   }
 
+
+
   public postData(actionEndpoint: string, model: any, _headers: HeadersKeyValuePair[] = []): Observable<Response> {
-    // let __headers = HttpService.HeadersBuilder(_headers);
-    let headers = new Headers({'Content-Type': 'application/json'});
+     let headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(actionEndpoint, JSON.stringify(model), {headers});
   }
 

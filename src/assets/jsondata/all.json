@@ -15,7 +15,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NjAwWDgwMA==/z/JdsAAOSwbm9ZqIGt/$_20.jpg",
     "year": 2012,
-    
+
     "price": 9811.00,
     "miles": 267287
   },
@@ -35,7 +35,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/MTE3NFgxNjAw/z/pokAAOSwg6pZa~k8/$_20.jpg",
     "year": 2019,
-    
+
     "price": 25141.00,
     "miles": 267287
   },
@@ -46,16 +46,16 @@
     "brand": "Audi",
     "model": "S500",
     "color": "red",
-    "sold": false,
+    "sold": true,
     "sellerId": 4,
-    "soldDate": null,
-    "soldPrice": null,
-    "buyerId": null,
+    "soldDate": "2017-08-20T16:05:43Z",
+    "soldPrice": 659834,
+    "buyerId": 2,
     "createdDate": "2017-09-20T22:05:43Z",
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NjAwWDgwMA==/z/JdsAAOSwbm9ZqIGt/$_20.jpg",
     "year": 2009,
-    
+
     "price": 659834.00,
     "miles": 267287
   },
@@ -66,16 +66,16 @@
     "brand": "BMW",
     "model": "S500",
     "color": "brown",
-    "sold": false,
+    "sold": true,
     "sellerId": 4,
-    "soldDate": null,
-    "soldPrice": null,
-    "buyerId": null,
+    "soldDate": "2017-08-20T16:05:43Z",
+    "soldPrice": 659834,
+    "buyerId": 2,
     "createdDate": "2017-09-20T22:05:43Z",
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NDgwWDY0MA==/z/lFQAAOSwd~RZRMoM/$_20.jpg",
     "year": 2015,
-    
+
     "price": 981531.00,
     "miles": 465445
   },
@@ -86,16 +86,16 @@
     "brand": "BMW",
     "model": "S500",
     "color": "black",
-    "sold": false,
+    "sold": true,
     "sellerId": 4,
-    "soldDate": null,
-    "soldPrice": null,
-    "buyerId": null,
+    "soldDate": "2017-08-20T16:05:43Z",
+    "soldPrice": 659834,
+    "buyerId": 2,
     "createdDate": "2017-09-20T22:05:43Z",
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NDgwWDY0MA==/z/lFQAAOSwd~RZRMoM/$_20.jpg",
     "year": 2016,
-    
+
     "price": 981531.00,
     "miles": 32
   },
@@ -106,16 +106,16 @@
     "brand": "Ford",
     "model": "S500",
     "color": "black",
-    "sold": false,
+    "sold": true,
     "sellerId": 4,
-    "soldDate": null,
-    "soldPrice": null,
-    "buyerId": null,
+    "soldDate": "2017-08-20T16:05:43Z",
+    "soldPrice": 659834,
+    "buyerId": 2,
     "createdDate": "2017-09-20T22:05:43Z",
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/MTE3NFgxNjAw/z/pokAAOSwg6pZa~k8/$_20.jpg",
     "year": 2011,
-    
+
     "price": 25141.00,
     "miles": 643
   },
@@ -135,7 +135,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NjAwWDgwMA==/z/JdsAAOSwbm9ZqIGt/$_20.jpg",
     "year": 2016,
-    
+
     "price": 659834.00,
     "miles": 234
   },
@@ -155,7 +155,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NDgwWDY0MA==/z/lFQAAOSwd~RZRMoM/$_20.jpg",
     "year": 2011,
-    
+
     "price": 981531.00,
     "miles": 76565
   },
@@ -175,7 +175,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/MTE3NFgxNjAw/z/pokAAOSwg6pZa~k8/$_20.jpg",
     "year": 2008,
-    
+
     "price": 25141.00,
     "miles": 6453
   },
@@ -195,7 +195,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NjAwWDgwMA==/z/JdsAAOSwbm9ZqIGt/$_20.jpg",
     "year": 2013,
-    
+
     "price": 659834.00,
     "miles": 987654
   },
@@ -215,7 +215,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NDgwWDY0MA==/z/lFQAAOSwd~RZRMoM/$_20.jpg",
     "year": 2016,
-    
+
     "price": 981531.00,
     "miles": 346465
   },
@@ -235,7 +235,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/MTE3NFgxNjAw/z/pokAAOSwg6pZa~k8/$_20.jpg",
     "year": 2002,
-    
+
      "price": 25141.00,
     "miles": 267287
   },
@@ -255,7 +255,7 @@
     "updatedDate": "2017-08-20T16:05:43Z",
     "imagePath": "https://i.ebayimg.com/00/s/NjAwWDgwMA==/z/JdsAAOSwbm9ZqIGt/$_20.jpg",
     "year": 2017,
-    
+
     "price": 659834.00,
     "miles": 76543
   }

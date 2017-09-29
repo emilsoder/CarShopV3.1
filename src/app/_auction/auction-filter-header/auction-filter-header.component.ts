@@ -16,6 +16,13 @@ export class AuctionFilterHeaderComponent implements OnInit {
     this._state.notifyDataChanged('filter', this.searchArg);
   }
 
+  sortOptions = [
+    {value: "price_asc", field: 'price', descending: false, viewValue: 'Price ascending'},
+    {value: "price_desc",field: 'price',  descending: true,  viewValue: 'Price descending'},
+    {value: "date_asc",field: 'date', descending: false,  viewValue: 'Newest first'},
+    {value: "date_desc",field: 'date', descending: true,  viewValue: 'Oldest first'}
+  ];
+
   searchArg: any = "";
 
   ngOnInit() {

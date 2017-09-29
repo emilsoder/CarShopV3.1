@@ -19,12 +19,12 @@ export class AuctionFilterPipe implements PipeTransform {
       return items;
     } else {
       let _cars = items.filter((item: Car) => this.applyFilter(item, AuctionFilterPipe.filterViewModel));
+
       return Sort.sort(_cars, filter);
     }
   }
 
   constructor(private _state: GlobalState) {
-
   }
 
   public static filterViewModel: FilterViewModel = new FilterViewModel();
@@ -38,7 +38,8 @@ export class AuctionFilterPipe implements PipeTransform {
       this.checkIfMatchInArray(car.brand, filter.brands),
       this.checkIfMatchInArray(car.model, filter.models),
       this.checkIfMatchInArray(car.color, filter.colors),
-      this.hasMatch(car.sellerId, filter.sellerId)
+      this.hasMatch(car.sellerId, filter.sellerId),
+      this.checkIfSold(car.sold, filter.sold)
     ];
     for (let i = 0; i < resultArray.length; i++) {
       if (resultArray[i] === false) {
@@ -46,6 +47,13 @@ export class AuctionFilterPipe implements PipeTransform {
       }
     }
     return true;
+  }
+
+  checkIfSold(val: boolean, fromFilter: boolean) {
+    if (val === false)
+      return fromFilter !== true;
+    if (val === true)
+      return fromFilter === true;
   }
 
   containsSearchText(val: string, searchText: string) {

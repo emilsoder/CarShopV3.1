@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
     moduleId: module.id.toString(),
@@ -7,5 +7,8 @@ import {Component} from "@angular/core";
     styleUrls: ["auction-main.component.min.css"]
 })
 
-export class AuctionMainComponent {
+export class AuctionMainComponent implements OnInit{
+  ngOnInit(): void {
+   }
+
 }

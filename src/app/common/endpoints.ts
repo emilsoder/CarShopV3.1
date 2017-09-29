@@ -19,3 +19,7 @@ export class FilterEndpoint {
   public static getCategories = "./assets/jsondata/categories.json";
   public static getColors = "./assets/jsondata/colors.json";
 }
+
+export class AuthenticationEndPoint{
+  public apiUrl: string = "";
+}

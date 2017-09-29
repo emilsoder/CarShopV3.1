@@ -135,9 +135,6 @@
   overflow-y: scroll;
 }
 
-/*/        "../node_modules/syncfusion-javascript/Scripts/ej/web/ej.web.all.min.js",
-"../node_modules/syncfusion-javascript/Content/ej/web/material/ej.web.all.min.css",
-*/
 i {
   display: inline-block;
   float: right;
@@ -147,7 +144,7 @@ i {
 #mySidebar {
   height: auto;
   min-height: 30%;
-  margin-top: 15px;
+  margin-top: 0;
 }
 
 .w3-btn-selected {
@@ -228,7 +225,7 @@ input.form-control.currency {
 }
 
 .auction-filter-panel-body {
-  padding: 5px;
+  padding: 0;
 }
 
 .brand-btn {

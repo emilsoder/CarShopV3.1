@@ -20,7 +20,7 @@
       "styles": [
          "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/w3-css/w3.css",
-        "app/_content/assets/app.min.css",
+        "app/_content/assets/app.css",
 
         "../node_modules/bootstrap-slider/dist/css/bootstrap-slider.min.css"
       ],

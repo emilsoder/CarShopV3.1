@@ -16,9 +16,16 @@ export class AuctionService {
     this.apiService = apiService;
   }
 
+  public getCarById(id: number): Observable<Car> {
+    return this.apiService.postData(AuctionEndPoint.getById, id)
+      .map(res => res.json() as Car);
+  }
+
   public getAuctionById(id: number): Observable<Auction> {
     return this.apiService.postData(AuctionEndPoint.getById, id)
-      .map(res => res.json() as Auction);
+      .map(res => {
+        return res.json() as Auction
+      });
   }
 
   public getAuctions(): Observable<Car[]> {
@@ -26,6 +33,21 @@ export class AuctionService {
       .map(res => {
         this.fireEvents(res.json() as Car[]);
         return res.json();
+      });
+  }
+
+  public getSoldAuctions(filter: any = false): Observable<Car[]> {
+    return this.apiService.getData(AuctionEndPoint.getall)
+      .map(res => {
+        let result = res.json() as Car[];
+        let cars = result.filter(x => x.sold === true);
+
+        if (filter) {
+          return cars.filter(x => {
+            x.registrationNumber.toLowerCase().indexOf(filter.toString().toLowerCase()) != -1;
+           })
+        }
+        return cars;
       });
   }
 

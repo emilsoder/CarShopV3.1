@@ -1,7 +1,4 @@
 import {Component} from '@angular/core';
-import * as _ from "lodash";
-import * as $ from "jquery";
-import {} from "bootstrap";
 
 @Component({
   selector: 'app-root',

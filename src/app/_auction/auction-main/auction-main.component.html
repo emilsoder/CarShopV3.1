@@ -1,14 +1,18 @@
 <div class="container-body">
-    <div id="auction-main-row">
-        <auction-filter-header></auction-filter-header>
-        <div class="row" id="">
-            <div class="col-xs-12 col-sm-3">
-                <sidebar-filter></sidebar-filter>
-            </div>
-            <div class="col-xs-12 col-sm-9">
-                <auction-list></auction-list>
-            </div>
-        </div>
+  <div id="auction-main-row">
+    <auction-filter-header></auction-filter-header>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <md-card style="padding:0">
+        <sidebar-filter></sidebar-filter>
+        </md-card>
+      </div>
+      <div class="col-xs-12 col-sm-9">
+        <md-card>
+          <auction-list></auction-list>
+        </md-card>
+      </div>
     </div>
-    <router-outlet></router-outlet>
+  </div>
+  <router-outlet></router-outlet>
 </div>
