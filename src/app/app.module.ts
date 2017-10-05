@@ -5,57 +5,41 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
 import {AppRoutingModule, routedComponents} from './app-routing.module';
-import {AuctionService, PubSubService, HttpService, AuctionFilterService} from './_services/services';
 import {HttpModule} from "@angular/http";
-import {AuctionFilterComponent, AuctionFilterHeaderComponent} from "./_auction/auction";
-import {AuctionFilterPipe, OrderByPipe} from "./_pipes/pipes";
-import {GlobalState} from "./_shared/_global";
-import {MaterialComponentsModule} from "./material-components/material-components.module";
+import {GlobalState} from "./shared/observers/_global";
+import {MaterialComponentsModule} from "./layout/material-components/material-components.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {ImageService} from "./_services/image.service";
-import {FindImagePipe} from "./_pipes/image.pipe";
-import {DashboardComponent} from './_reporting/dashboard/dashboard.component';
-import {TransactionComponent} from './_transactions/transaction/transaction.component';
-import {UserComponent} from './user/user.component';
-import {UserService} from "./_services/user.service";
-import {AuthenticationService} from "./_services/authentication.service";
-import {AlertService} from "./_services/alert.service";
-import { CompComponent } from './_animations/comp/comp.component';
+import {HttpService, PubSubService} from "./shared/services/services";
+import {AuctionModule} from "./auction/auction.module";
+import {HomeModule} from "./home/home.module";
+import {DashboardModule} from "./dashboard/dashboard.module";
+import {AuthenticationModule} from "./authentication/authentication.module";
+import {AuthGuard} from "./shared/guards/auth.guard";
+import {SharedBaseModule} from "./shared/modules/shared.base.module";
+import {CurrentUserService} from "./shared/services/currentuser.service";
+import {AuthorizedGuard} from "./shared/guards/authorized.guard";
+import {StatusDialogComponent} from "./layout/dialog/status-dialog.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     routedComponents,
-    AuctionFilterComponent,
-    AuctionFilterHeaderComponent,
-    AuctionFilterPipe,
-    OrderByPipe,
-    FindImagePipe,
-    DashboardComponent,
-    TransactionComponent,
-    UserComponent,
-    CompComponent
+    StatusDialogComponent
   ],
   imports: [
-    HttpModule,
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MaterialComponentsModule,
-    FlexLayoutModule,
+    SharedBaseModule,
+    AuctionModule,
+    HomeModule,
+    DashboardModule,
+    AuthenticationModule,
   ],
   providers: [
     HttpService,
-    ImageService,
-    AuctionFilterService,
-    AuctionService,
     PubSubService,
     GlobalState,
-    UserService,
-    AuthenticationService,
-    AlertService
+    AuthGuard,
+    AuthorizedGuard,
+    CurrentUserService
   ],
   bootstrap: [AppComponent]
 })

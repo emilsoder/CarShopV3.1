@@ -1,0 +1,182 @@
+<h1 md-dialog-title>{{title}}</h1>
+<div md-dialog-content>
+
+  <form class="example-form" (ngSubmit)="loginForm.form.valid && login()" #loginForm="ngForm" *ngIf="isLoginView">
+    <button md-raised-button style="float: right"
+            (click)="isLoginView = false">Register
+    </button>
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   placeholder="Username"
+                   [(ngModel)]="loginModel.username"
+                   [required]="true"
+                   #username="ngModel"
+                   name="userName">
+            <div *ngIf="loginForm.submitted && !username.valid" style="color: red">Username is required</div>
+          </md-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   placeholder="Password"
+                   [(ngModel)]="loginModel.password"
+                   [required]="true"
+                   #password="ngModel"
+                   type="password"
+                   name="password">
+            <div *ngIf="loginForm.submitted && !password.valid" style="color: red">Password is required</div>
+          </md-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <label *ngIf="isError" style="color: red">Request failed. Please try again with different credentials</label>
+
+    <button md-raised-button color="primary" type="submit"
+            [disabled]="!loginForm.form.valid &&  !password.value || !username.value">Log in
+    </button>
+    <button md-raised-button
+            color="warn"
+            (click)="loginForm.noValidate = true; onNoClick()">Cancel
+    </button>
+  </form>
+
+  <form class="example-form" (ngSubmit)="registerForm.form.valid && register()" #registerForm="ngForm"
+        *ngIf="!isLoginView">
+
+    <button md-raised-button style="float: right"
+            (click)="isLoginView = true">Login
+    </button>
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <md-select placeholder="User type" #roleId name="reg_roleId" style="width: 100%">
+            <md-option [value]="2" (click)="registerModel.roleId = 2">
+              Seller
+            </md-option>
+            <md-option [value]="3" (click)="registerModel.roleId=3">
+              Buyer
+            </md-option>
+          </md-select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   placeholder="First name"
+                   [(ngModel)]="registerModel.firstName"
+                   [required]="true"
+                   #reg_firstName="ngModel"
+                   name="reg_firstName">
+            <div *ngIf="registerForm.submitted && !reg_firstName.valid" style="color: red">First name is required
+            </div>
+          </md-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   placeholder="First name"
+                   [(ngModel)]="registerModel.lastName"
+                   [required]="true"
+                   #reg_lastName="ngModel"
+                   name="reg_lastName">
+            <div *ngIf="registerForm.submitted && !reg_lastName.valid" style="color: red">Last name is required
+            </div>
+          </md-form-field>
+        </td>
+      </tr>
+
+      <!-- -------- -->
+
+      <tr>
+        <td>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   placeholder="Username"
+                   [(ngModel)]="registerModel.userName"
+                   [required]="true"
+                   #reg_username="ngModel"
+                   name="reg_userName">
+            <div *ngIf="registerForm.submitted && !reg_username.valid" style="color: red">Username is required</div>
+          </md-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   placeholder="Email"
+                   type="email"
+                   [(ngModel)]="registerModel.email"
+                   [required]="true"
+                   #reg_email="ngModel"
+                   name="reg_email">
+            <div *ngIf="registerForm.submitted && !reg_username.valid" style="color: red">Email is required</div>
+          </md-form-field>
+        </td>
+      </tr>
+
+      <!-- -------- -->
+
+      <tr>
+        <td>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   placeholder="Password"
+                   [(ngModel)]="registerModel.password"
+                   [required]="true"
+                   type="password"
+                   #reg_password="ngModel"
+                   name="reg_password">
+            <div *ngIf="registerForm.submitted && !reg_password.valid" style="color: red">Password is required</div>
+          </md-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <md-form-field class="example-full-width">
+
+            <input mdInput
+                   placeholder="Password"
+                   [(ngModel)]="registerModel.confirmPassword"
+                   [required]="true"
+                   type="password"
+                   #reg_confirmPassword="ngModel"
+                   name="reg_confirmPassword">
+
+            <div
+              *ngIf="(!reg_password.valid) && registerForm.submitted && registerModel.password === registerModel.confirmPassword"
+              style="color: red">Passwords do not match
+            </div>
+          </md-form-field>
+        </td>
+      </tr>
+
+    </table>
+
+    <label *ngIf="isError" style="color: red">Request failed. Please try again later.</label>
+
+    <button md-raised-button color="primary" type="submit"
+            [disabled]="(!registerForm.form.valid )&&  registerModel.password === registerModel.confirmPassword">
+      Register
+    </button>
+    <button md-raised-button
+            color="warn"
+            (click)="registerForm.noValidate = true; onNoClick(); ">Cancel
+    </button>
+
+
+  </form>
+
+</div>

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {CurrentUserService} from "./shared/services/currentuser.service";
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,8 @@ import {Component} from '@angular/core';
 export class AppComponent {
   year: any;
 
-  constructor() {
-     this.year = (new Date()).getFullYear();
+  constructor(public currentUser: CurrentUserService) {
+    this.year = (new Date()).getFullYear();
     this.addEventHandlers();
   }
 

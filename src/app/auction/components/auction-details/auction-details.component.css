@@ -1,0 +1,30 @@
+.w3-circle-active {
+  background-color: teal !important;
+}
+
+.left, .right {
+  cursor: pointer;
+  font-size: xx-large;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.details-grid > tr > td {
+  width: 50%;
+  text-align: left;
+}
+
+.details-grid > tr {
+  border-bottom: 1px solid lightgrey;
+}
+#ejControl_0 > div.e-gridcontent{
+  overflow: scroll !important;
+}

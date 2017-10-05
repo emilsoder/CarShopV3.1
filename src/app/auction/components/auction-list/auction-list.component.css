@@ -1,0 +1,23 @@
+@media (max-width: 951px) {
+
+  .w3-main {
+    padding-left: 0 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .row.equal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.table{
+  margin-bottom: 5px !important;
+  border-radius: 0 !important;
+}
+td, tr, th {
+  padding: 3px !important
+}
+th{
+  padding-left:15px !important
+}

@@ -1,0 +1,167 @@
+<div class="w3-card-2
+w3-animate-opacity"
+     id="mySidebar">
+
+  <div class="w3-button
+  w3-block
+   w3-bar-item
+  w3-left-align
+  auction-filter-toggle-panel-btn"
+       id="auction-filter-toggle-panel-btn" style="background-color: #3f51b5; color: white">
+
+    <i class="glyphicon
+    glyphicon-filter
+    w3-right-align
+    auction-filter-toggle-panel-glyphicon"></i>
+    Filter
+  </div>
+  <div class="auction-filter-panel-body collapse in"
+       id="auction-filter-panel-body">
+
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Colors
+        </md-panel-title>
+      </md-expansion-panel-header>
+      <md-selection-list #col
+                         style="max-height: 350px; overflow-y: scroll;">
+        <md-list-option *ngFor="let color of colors"
+                        (click)="setColors(color)">
+          {{color}}
+        </md-list-option>
+      </md-selection-list>
+    </md-expansion-panel>
+
+    <md-expansion-panel style="padding: 0">
+      <md-expansion-panel-header>
+        <md-panel-title>
+          Makers
+        </md-panel-title>
+      </md-expansion-panel-header>
+
+      <md-selection-list>
+        <md-list-option [disabled]="brandsChecked.selectedOptions.selected.length <= 0"
+                        [selected]="brandsChecked.selectedOptions.selected.length <= 0"
+                        (click)="brandsChecked.deselectAll();setBrand('any')"
+                        style="padding-right: 17px">
+          Any
+        </md-list-option>
+      </md-selection-list>
+
+      <md-selection-list #brandsChecked
+                         style="max-height: 350px; overflow-y: scroll; padding: 0">
+        <md-list-option *ngFor="let brand of makers"
+                        (click)="setBrand(brand.toLowerCase())">
+          {{brand}}
+        </md-list-option>
+
+      </md-selection-list>
+
+    </md-expansion-panel>
+
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        Price
+      </md-expansion-panel-header>
+      <md-selection-list>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   placeholder="Minimum"
+                   step="100"
+                   min="0"
+                   max="{{_currentFilter.price.max}}"
+                   [(ngModel)]="_currentFilter.price.min"
+                   value="{{_currentFilter.price.min}}"
+                   (change)="notifyDataChanged()">
+            <span mdSuffix> &nbsp; SEK</span>
+          </md-form-field>
+        </md-list-item>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   placeholder="Maximum"
+                   step="100"
+                   min="{{_currentFilter.price.min}}"
+                   [(ngModel)]="_currentFilter.price.max"
+                   value="{{_currentFilter.price.max}}"
+                   (change)="notifyDataChanged()">
+            <span mdSuffix> &nbsp; SEK</span>
+          </md-form-field>
+        </md-list-item>
+      </md-selection-list>
+    </md-expansion-panel>
+
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        Registration
+      </md-expansion-panel-header>
+      <md-selection-list>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   min="0"
+                   placeholder="From"
+                   step="1"
+                   max="{{_currentFilter.year.max}}"
+                   [(ngModel)]="_currentFilter.year.min"
+                   value="{{_currentFilter.year.min}}"
+                   (change)="notifyDataChanged()">
+          </md-form-field>
+        </md-list-item>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   min="{{_currentFilter.year.min}}"
+                   placeholder="To"
+                   step="1"
+                   [(ngModel)]="_currentFilter.year.max"
+                   value="{{_currentFilter.year.max}}"
+                   (change)="notifyDataChanged()">
+          </md-form-field>
+        </md-list-item>
+      </md-selection-list>
+    </md-expansion-panel>
+
+    <md-expansion-panel>
+      <md-expansion-panel-header>
+        Mileage
+      </md-expansion-panel-header>
+      <md-selection-list>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   min="0"
+                   placeholder="From"
+                   step="100"
+                   max="{{_currentFilter.miles.max}}"
+                   [(ngModel)]="_currentFilter.miles.min"
+                   value="{{_currentFilter.miles.min}}"
+                   (change)="notifyDataChanged()">
+            <span mdSuffix> &nbsp; miles</span>
+          </md-form-field>
+        </md-list-item>
+        <md-list-item>
+          <md-form-field class="example-full-width">
+            <input mdInput
+                   type="number"
+                   placeholder="To"
+                   step="100"
+                   min="{{_currentFilter.miles.min}}"
+                   [(ngModel)]="_currentFilter.miles.max"
+                   value="{{_currentFilter.miles.max}}"
+                   (change)="notifyDataChanged()">
+            <span mdSuffix> &nbsp; miles</span>
+          </md-form-field>
+        </md-list-item>
+      </md-selection-list>
+    </md-expansion-panel>
+
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<button (click)="getCars()" md-button style="float: right">Refresh</button>
+<ej-grid [dataSource]="data"
+         (rowSelected)="onRowSelecting($event)"
+         [allowPaging]="true"
+         [allowGrouping]="true"
+         [allowSorting]="true"
+         [allowScrolling]="true"
+         [enableResponsiveRow]="true"
+         [allowResizeToFit]="true"
+         [allowSelection]="true"
+         selectionType="single"
+         [selectionSettings]="selectionMode">
+  <e-columns>
+    <e-column field="id" headerText="Id" [visible]="false"></e-column>
+    <e-column field="sellerId" headerText="Seller id"></e-column>
+    <e-column field="registrationNumber" headerText="Reg. number"></e-column>
+    <e-column field="brand" headerText="Brand"></e-column>
+    <e-column field="model" headerText="Model"></e-column>
+    <e-column field="createdDate" headerText="Published"></e-column>
+    <e-column field="updatedDate" headerText="Last updated"></e-column>
+  </e-columns>
+</ej-grid>

@@ -1,0 +1,53 @@
+﻿<div class="row equal">
+  <div class="col-sm-6 col-md-4"
+       *ngFor="let car of carsAsync | async | auctionFilter: _filter"
+       style="margin-bottom: 15px;">
+
+    <md-card class="example-card" id="auction_{{car.id}}">
+
+      <md-card-header [routerLink]="['details', car.id]"
+                      style="cursor: pointer; display: block;">
+        <md-card-title>
+          <div style="white-space: nowrap; max-width: 120em; overflow: hidden; text-overflow: ellipsis;">
+            {{car.description}}
+          </div>
+        </md-card-title>
+      </md-card-header>
+
+      <img [routerLink]="['details', car.id]"
+           md-card-image
+           *ngFor="let img of images | findImage:car.id"
+           src="{{img.url}}" alt="car"
+           style="cursor: pointer;">
+
+      <md-card style="padding: 0;margin-left: -16px; margin-right: -16px;">
+        <table class="table" style="font-size: small">
+          <tr>
+            <th>Year</th>
+            <td>{{car.year}}</td>
+          </tr>
+          <tr>
+            <th>Maker</th>
+            <td>{{car.brand}}</td>
+          </tr>
+          <tr>
+            <th>Model</th>
+            <td>{{car.model}}</td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td>{{car.price}} &nbsp; SEK</td>
+          </tr>
+        </table>
+      </md-card>
+
+      <md-card-actions>
+        <button [routerLink]="['details', car.id]"
+                md-raised-button
+                color="primary"
+                style="width: 100% ">Details
+        </button>
+      </md-card-actions>
+    </md-card>
+  </div>
+</div>

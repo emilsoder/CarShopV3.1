@@ -1,0 +1,28 @@
+<h1 md-dialog-title>
+  {{data.title}}
+</h1>
+<div md-dialog-content>
+  <h3> {{data.message}}</h3>
+
+  <div *ngIf="data.subModel">
+    <hr>
+    <md-card>
+      <table class="table table-bordered table-responsive table-condensed table-default"
+             style="width: 100%;">
+        <tr *ngFor="let item of objectViewModel">
+          <td><b>{{item.key}}</b></td>
+          <td>{{item.value}}</td>
+        </tr>
+      </table>
+    </md-card>
+  </div>
+</div>
+
+<div md-dialog-actions>
+  <button md-raised-button
+          color="primary"
+          (click)="cancel()"
+          tabindex="0">
+    Close
+  </button>
+</div>

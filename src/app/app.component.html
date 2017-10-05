@@ -1,5 +1,5 @@
 <div id="maincontainer">
-  <nav class="navbar navbar-default">
+  <nav class="navbar" style="background-color: #3f51b5; color: white">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -7,30 +7,51 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">CarShop</a>
+        <button md-button style="height: 50px;" class="navbar-brand" routerLink="/">CarShop v3</button>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a
-            routerLink="/">Home</a></a></li>
-          <li><a routerLinkActive="active"><a routerLink="/auctions">Products</a></a></li>
+          <li>
+            <button md-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                    style="height: 50px; width: 100%; text-align: left">
+              Home
+            </button>
+          </li>
+          <li>
+            <button md-button routerLink="/auctions" routerLinkActive="active"
+                    style="height: 50px; width: 100%; text-align: left"> Products
+            </button>
+          </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <ul class="nav navbar-nav navbar-right" *ngIf="!currentUser.isLoggedIn()">
+          <li>
+            <button md-button routerLink="/register" style="height: 50px; width: 100%; text-align: left"> Register
+            </button>
+          </li>
+          <li>
+            <button md-button routerLink="/login" style="height: 50px; width: 100%; text-align: left">Login</button>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" *ngIf="currentUser.isLoggedIn()">
+          <li *ngIf="currentUser.currentUserIsSeller()">
+            <button md-button routerLink="/dashboard" style="height: 50px; width: 100%; text-align: left">Dashboard
+            </button>
+          </li>
+          <li>
+            <button (click)="currentUser.logOut();" md-button
+                    style="cursor: pointer; height: 50px; width: 100%; text-align: left">Logout
+            </button>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-
-
 
   <main>
     <router-outlet></router-outlet>
   </main>
   <footer>
     <div class="footer-limiter">
-
       <div class="footer-left">
         <p class="footer-links"> {{year}} CarShop </p>
         <p> Created by Emil Hedström Södergren </p>

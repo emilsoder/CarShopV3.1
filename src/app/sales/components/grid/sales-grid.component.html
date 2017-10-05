@@ -1,0 +1,28 @@
+<ej-grid id="SalesGrid"
+         [(dataSource)]="dataSource"
+         [allowPaging]="true"
+         [allowGrouping]="true"
+         [groupSettings]="groupedColumns"
+         [showSummary]="true"
+         [summaryRows]="summaryRows"
+         [allowSorting]="true"
+         [allowFiltering]="true"
+         [filterSettings]="filterType"
+         [allowScrolling]="true"
+         [enableResponsiveRow]="true"
+         [allowResizeToFit]="true">
+
+  <e-columns>
+    <e-column field="id" headerText="Id"></e-column>
+    <e-column field="sellerId" headerText="Seller id"></e-column>
+    <e-column field="buyerId" headerText="Buyer id"></e-column>
+
+    <e-column field="registrationNumber" headerText="Reg. number"></e-column>
+    <e-column field="brand" headerText="Brand"></e-column>
+    <e-column field="model" headerText="Model"></e-column>
+
+    <e-column field="createdDate" headerText="Published"></e-column>
+    <e-column field="soldDate" headerText="Sold date"></e-column>
+    <e-column field="soldPrice" headerText="Winning price"></e-column>
+  </e-columns>
+</ej-grid>

@@ -36,7 +36,8 @@
     "rxjs": "^5.4.2",
     "syncfusion-javascript": "^15.3.29",
     "w3-css": "^4.0.4",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "moment": "^2.18.1"
   },
   "devDependencies": {
     "@angular/cli": "1.4.2",

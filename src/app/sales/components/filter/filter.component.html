@@ -1,0 +1,37 @@
+<div class="row">
+
+  <div class="col-xs-12" style="padding-top: 10px">
+    <md-form-field style="padding-right: 15px">
+      <input mdInput #min
+             [mdDatepicker]="fromDate"
+             [(ngModel)]="minDate"
+             [(value)]="minDate"
+             min="{{staticMinDate.toISOString()}}"
+             max="{{maxDate.toISOString()}}"
+             placeholder="From">
+      <md-datepicker-toggle mdSuffix [for]="fromDate"></md-datepicker-toggle>
+      <md-datepicker #fromDate></md-datepicker>
+    </md-form-field>
+
+    <span class="example-spacer"></span>
+
+    <md-form-field style="padding-right: 15px">
+      <input mdInput #max
+             [mdDatepicker]="toDate"
+             [(ngModel)]="maxDate"
+             [(value)]="maxDate"
+             min="{{minDate.toISOString()}}"
+             max="{{staticMaxDate.toISOString()}}"
+             placeholder="To">
+      <md-datepicker-toggle mdSuffix [for]="toDate"></md-datepicker-toggle>
+      <md-datepicker #toDate></md-datepicker>
+    </md-form-field>
+
+    <span class="example-spacer"></span>
+
+    <button md-raised-button (click)="applyFilter()">
+      Apply filter
+      <i class="glyphicon glyphicon-filter"></i>
+    </button>
+  </div>
+</div>

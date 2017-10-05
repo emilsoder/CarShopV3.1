@@ -1,0 +1,188 @@
+﻿<div id="detailsContainer">
+  <button md-raised-button color="warn" (click)="closeThis()">Close</button>
+  <hr>
+  <md-tab-group>
+    <md-tab label="Car">
+      <h1>{{car.brand + " " + car.model + " " + car.year}}</h1>
+      <md-card>
+        <div class="row" style="">
+          <div class="col-sm-6">
+            <md-card style="height: 100%;">
+              <div id="myCarousel" class="carousel slide w3-card-4" data-ride="carousel" data-interval="false">
+                <div class="carousel-inner">
+                  <div *ngFor="let image of _images | async" class="item {{image.active}}">
+                    <img src="{{image.url}}" alt="">
+                  </div>
+                </div>
+                <a class="left carousel-control" (click)="changeImage('prev');">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" (click)="changeImage('next');">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </md-card>
+          </div>
+          <div class="col-sm-6" style="display: flex; align-items: stretch;">
+            <md-card style="height: 100%; width: 100%">
+              <form class="example-form">
+                <table class="example-full-width">
+                  <tr>
+                    <td>
+                      <md-card>
+                        <div class="example-full-width">
+                          Current price: <b>{{minimumBidPrice}}</b>
+                        </div>
+                      </md-card>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <md-card>
+                        <md-form-field class="example-full-width">
+                          <input mdInput
+                                 [disabled]="!isUserLoggedIn"
+                                 [required]="true"
+                                 type="number"
+                                 [(ngModel)]="bidPrice"
+                                 name="bidPriceInput"
+                                 placeholder="Create bid"
+                                 min="{{minimumBidPrice}}"
+                                 #bidPriceInput="ngModel"
+                                 value="{{bidPrice}}">
+                        </md-form-field>
+                      </md-card>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <md-card>
+                        <div class="example-full-width">
+                          <button *ngIf="isUserLoggedIn === true"
+                                  [disabled]="bidPrice <= minimumBidPrice"
+                                  md-raised-button
+                                  color="primary"
+                                  (click)="createBid()"
+                                  style="width: 100%">
+                            Place bid
+                          </button>
+                          <button *ngIf="isUserLoggedIn === false"
+                                  md-raised-button
+                                  color="primary"
+                                  (click)="openLoginDialog()"
+                                  style="width: 100%">
+                            Login or register to bid
+                          </button>
+                        </div>
+                      </md-card>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </md-card>
+          </div>
+        </div>
+        <hr>
+        <md-tab-group (selectChange)="setGridScroll()">
+          <md-tab label="Description">
+            <md-card>
+              {{car.description}}
+            </md-card>
+            <md-card>
+              <md-card-content>
+                <div class="row">
+                  <div class="col-md-4">
+                    <md-card>
+                      <table class="example-full-width details-grid" cellpadding="0">
+                        <tr>
+                          <td>Registration number:</td>
+                          <td>{{car.registrationNumber}}</td>
+                        </tr>
+                        <tr>
+                          <td>Miles:</td>
+                          <td>{{car.miles}}</td>
+                        </tr>
+                        <tr>
+                          <td>First registration:</td>
+                          <td>{{car.year}}</td>
+                        </tr>
+                      </table>
+                    </md-card>
+                  </div>
+                  <div class="col-md-4">
+                    <md-card>
+                      <table class="example-full-width details-grid" cellpadding="0">
+                        <tr>
+                          <td>Color:</td>
+                          <td>{{car.color}}</td>
+                        </tr>
+                        <tr>
+                          <td>Brand:</td>
+                          <td>{{car.brand}}</td>
+                        </tr>
+                        <tr>
+                          <td>Model:</td>
+                          <td>{{car.model}}</td>
+                        </tr>
+                      </table>
+                    </md-card>
+                  </div>
+                  <div class="col-md-4">
+                    <md-card>
+                      <table class="example-full-width details-grid" cellpadding="0">
+                        <tr>
+                          <td>Seller id:</td>
+                          <td>{{car.sellerId}}</td>
+                        </tr>
+                        <tr>
+                          <td>Publish date:</td>
+                          <td>{{formatDate(car.createdDate)}}</td>
+                        </tr>
+                        <tr>
+                          <td>Last updated:</td>
+                          <td>{{formatDate(car.updatedDate)}}</td>
+                        </tr>
+                      </table>
+                    </md-card>
+                  </div>
+                </div>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+          <md-tab label="Bid history">
+            <md-card>
+              <md-card-header>
+                <label md-card-title>
+                  Bidding history
+                </label>
+              </md-card-header>
+              <md-card-content>
+                <ej-grid [dataSource]='bidHistory'
+                         [allowPaging]="true"
+                         [allowSorting]='true'
+                         height="315px">
+                  <e-columns>
+                    <e-column field='id' headerText='Id' textAlign='right' width=90></e-column>
+                    <e-column field='bidPrice' headerText='Bid price' width=120></e-column>
+                    <e-column field='bidderId' headerText='Bidder Id' textAlign='right' width=90></e-column>
+                    <e-column field='createdDate' headerText='Date' textAlign='right' width=120></e-column>
+                  </e-columns>
+                </ej-grid>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+        </md-tab-group>
+      </md-card>
+    </md-tab>
+    <md-tab label="Images">
+      <h1>Images</h1>
+
+      <md-card *ngFor="let img of _images | async">
+        <img class="img-responsive" src="{{img.url}}"/>
+      </md-card>
+
+    </md-tab>
+  </md-tab-group>
+</div>
