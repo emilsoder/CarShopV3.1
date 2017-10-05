@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
-import {Headers, RequestOptions} from "@angular/http";
-import {Http, Response} from "@angular/http";
+import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch'
 import 'rxjs/add/operator/take'
@@ -21,7 +20,7 @@ export class HttpService {
   }
 
   public postData(actionEndpoint: string, model: any, headers: RequestOptions = null): Observable<Response> {
-    console.log(headers)
+    console.log(headers);
     return headers ? this.http.post(actionEndpoint, model, headers) : this.http.post(actionEndpoint, model);
   }
 

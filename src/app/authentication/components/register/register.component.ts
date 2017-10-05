@@ -3,8 +3,6 @@ import {Router} from '@angular/router';
 
 import {UserService} from "../../services/services";
 import {IRegisterUser, RegisterUser} from "../../../shared/interfaces/IRegisterUser";
-import {NgForm} from "@angular/forms";
-import {IRole} from "../../models/role";
 
 @Component({
   moduleId: module.id,

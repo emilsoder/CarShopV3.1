@@ -1,5 +1,3 @@
-import {Car} from "./AuctionList";
-
 export class FilterViewModel {
   public id: number;
   public searchText: string = "";

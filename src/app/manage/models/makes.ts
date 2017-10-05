@@ -1,4 +1,4 @@
-export class brands{
+export class brands {
   i: number;
   n: string;
 }

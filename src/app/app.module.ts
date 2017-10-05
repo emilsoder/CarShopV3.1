@@ -1,14 +1,7 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
-import {AppRoutingModule, routedComponents} from './app-routing.module';
-import {HttpModule} from "@angular/http";
+import {routedComponents} from './app-routing.module';
 import {GlobalState} from "./shared/observers/_global";
-import {MaterialComponentsModule} from "./layout/material-components/material-components.module";
-import {FlexLayoutModule} from "@angular/flex-layout";
 import {HttpService, PubSubService} from "./shared/services/services";
 import {AuctionModule} from "./auction/auction.module";
 import {HomeModule} from "./home/home.module";

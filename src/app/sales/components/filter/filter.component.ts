@@ -19,7 +19,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
     this._state.subscribe("soldCarsLoaded", (dates: DateFilterViewModel) => {
-      console.log(dates.min)
+      console.log(dates.min);
       this.minDate = dates.min;
       this.maxDate = dates.max;
       this.staticMinDate = dates.min;

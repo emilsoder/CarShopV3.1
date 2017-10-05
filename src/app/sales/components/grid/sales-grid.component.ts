@@ -10,14 +10,15 @@ import "ej-angular2"
 
 @Component({
   selector: 'sales-grid',
-  templateUrl: './sales-grid.component.html' })
+  templateUrl: './sales-grid.component.html'
+})
 export class SalesGridComponent implements OnInit, OnDestroy {
-  private soldCars: ICar[];
   public dataSource: ICar[];
-  private subscriptions: Subscription[] = [];
   public filterType: object;
   public groupedColumns: object;
   public summaryRows: any[];
+  private soldCars: ICar[];
+  private subscriptions: Subscription[] = [];
 
   constructor(private salesService: SalesService,
               private _state: GlobalState) {
@@ -26,6 +27,13 @@ export class SalesGridComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.initializeData();
     this.initializeGrid();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscriptions) {
+      this.subscriptions.forEach(sub => sub.unsubscribe());
+      this._state.unsubscribe("dateFilterChanged")
+    }
   }
 
   private initializeData(): void {
@@ -57,7 +65,7 @@ export class SalesGridComponent implements OnInit, OnDestroy {
   private getMinMaxDates(cars: ICar[]): DateFilterViewModel {
     let soldDateArray = cars.map(x => moment(new Date(x.soldDate))) as Moment[];
     let vm = new DateFilterViewModel();
-    vm.min = moment.min(soldDateArray).toDate()
+    vm.min = moment.min(soldDateArray).toDate();
     vm.max = moment.max(soldDateArray).toDate();
 
     return vm;
@@ -71,12 +79,5 @@ export class SalesGridComponent implements OnInit, OnDestroy {
   private isInRange(_soldDate: string, dateFilter: DateFilterViewModel): boolean {
     let soldDate = moment(new Date(_soldDate));
     return soldDate.diff(moment(new Date(dateFilter.min))) >= 0 && soldDate.diff(moment(new Date(dateFilter.max))) <= 0;
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscriptions) {
-      this.subscriptions.forEach(sub => sub.unsubscribe());
-      this._state.unsubscribe("dateFilterChanged")
-    }
   }
 }

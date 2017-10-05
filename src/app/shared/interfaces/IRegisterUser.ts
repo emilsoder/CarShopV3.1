@@ -8,7 +8,7 @@ export interface IRegisterUser {
   confirmPassword: string;
 }
 
-export class RegisterUser implements IRegisterUser{
+export class RegisterUser implements IRegisterUser {
   roleId: number;
   userName: string;
   firstName: string;

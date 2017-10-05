@@ -14,7 +14,7 @@ export class AuctionEndPoint {
   }
 }
 
-export class UserInfoEndPoint{
+export class UserInfoEndPoint {
   public static roles = BaseEndpoint.Url + "api/roles"
 }
 
@@ -23,7 +23,7 @@ export class BidEndpoint {
   public static create = BaseEndpoint.Url + "api/bids";
   public static get = BaseEndpoint.Url + "api/bids";
 
-  private static readonly _getBidsByCarId = "api/cars/ "
+  private static readonly _getBidsByCarId = "api/cars/ ";
 
   public static getbyid(carId: number): string {
     return BaseEndpoint.Url + BidEndpoint._getBidsByCarId + carId + "/bids";
@@ -31,7 +31,7 @@ export class BidEndpoint {
 }
 
 export class FilterEndpoint {
-  public static getColors = "./assets/jsondata/colors.json";
+  public static getColors = "./assets/data/colors.json";
 }
 
 export class AuthenticationEndPoint {
@@ -39,12 +39,13 @@ export class AuthenticationEndPoint {
   public static register: string = `${BaseEndpoint.Url}api/account/register `;
 }
 
-export class ExternalSneakyApi{
+export class ExternalSneakyApi {
   private static BaseUrl = "http://anyorigin.com/go?url=http%3A//m.mobile.de/svc/r/";
   public static getBrands = `${ExternalSneakyApi.BaseUrl}makes/Car%3F_jsonp%3D_loadMakes%26_lang%3Den&callback=?`;
 
-  private static getModelsSuffix = "%3F_jsonp%3D_loadModels%26_lang%3Den&callback=?"
-  public static getModels(brandId: any){
+  private static getModelsSuffix = "%3F_jsonp%3D_loadModels%26_lang%3Den&callback=?";
+
+  public static getModels(brandId: any) {
     return `${this.BaseUrl}models/${brandId}${this.getModelsSuffix}`;
   }
 }

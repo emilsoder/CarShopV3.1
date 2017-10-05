@@ -1,4 +1,4 @@
-﻿import {Component, OnInit, OnDestroy} from '@angular/core';
+﻿import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Subscription';
 import {fadeInAnimation} from '../../../layout/_animations/animations';
 import {AuctionFilterPipe} from "../../pipes/auction-filter.pipe";
@@ -23,10 +23,10 @@ import {PubSubService} from "../../../shared/services/pub-sub.service";
 })
 
 export class AuctionListComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
   public _filter: FilterViewModel = new FilterViewModel();
   public carsAsync: any = {} || [];
   public images: any = {} || [];
+  private subscription: Subscription;
 
   constructor(private auctionService: AuctionService,
               private pubSubService: PubSubService,
@@ -44,6 +44,10 @@ export class AuctionListComponent implements OnInit, OnDestroy {
     this.getImages();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
   private getImages(): void {
     this.images = this.imageService.getImages();
   }
@@ -56,10 +60,6 @@ export class AuctionListComponent implements OnInit, OnDestroy {
     this._state.subscribe('filter', (x: FilterViewModel) => {
       return this._filter = x;
     });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }
 

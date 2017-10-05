@@ -9,6 +9,8 @@ import * as _ from "lodash";
 })
 
 export class AuctionFilterPipe implements PipeTransform {
+  public static filterViewModel: FilterViewModel = new FilterViewModel();
+
   transform(items: Car[], filter: FilterViewModel): Car[] {
     AuctionFilterPipe.filterViewModel = filter;
     if (!items || !AuctionFilterPipe.filterViewModel) return items;
@@ -16,13 +18,11 @@ export class AuctionFilterPipe implements PipeTransform {
     return Sort.sort(_cars, filter);
   }
 
-  public static filterViewModel: FilterViewModel = new FilterViewModel();
-
   applyFilter(car: Car, filter: FilterViewModel) {
 
     let resultArray = [this.containsSearchText(car.description, filter.searchText),
       this.containsSearchText(car.brand + " " + car.model + " " + car.year, filter.searchText),
-       this.checkIfInRange(car.price, filter.price.min, filter.price.max),
+      this.checkIfInRange(car.price, filter.price.min, filter.price.max),
       this.checkIfInRange(car.miles, filter.miles.min, filter.miles.max),
       this.checkIfInRange(car.year, filter.year.min, filter.year.max),
       this.checkIfMatchInArray(car.brand, filter.brands),

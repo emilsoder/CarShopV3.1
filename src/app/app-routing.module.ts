@@ -1,5 +1,5 @@
 ﻿import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AuctionMainComponent} from "./auction/components/auction-main/auction-main.component";
 import {AuctionDetailsComponent} from "./auction/components/auction-details/auction-details.component";
 import {LoginComponent} from "./authentication/components/login/login.component";

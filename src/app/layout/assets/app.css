@@ -1,4 +1,7 @@
 @import "../../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../../../../node_modules/syncfusion-javascript/Content/ej/web/material/ej.web.all.min.css";
+@import "../../../../node_modules/w3-css/w3.css";
+
 
 .mat-expansion-panel-body {
   padding: 0 !important;
@@ -14,6 +17,7 @@ body {
 body ng-component {
   display: block;
 }
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -23,6 +27,7 @@ body ng-component {
 .example-full-width {
   width: 100%;
 }
+
 /* HEADER STYLES
 --------------------------------------------------------------------- */
 /* MAIN STYLES

@@ -1,19 +1,17 @@
-
 import {MinMaxViewModel} from "../models/MinMaxViewModel";
-import {Car} from "../models/AuctionList";
 import {FilterViewModel} from "../models/FilterViewModel";
 import {ICar} from "../../shared/interfaces/ICar";
 
 export class EventFireing {
   public getFilterViewModel(cars: ICar[]): FilterViewModel {
-    let p = this.getMinMaxRanges(cars, "price")
+    let p = this.getMinMaxRanges(cars, "price");
     let m = this.getMinMaxRanges(cars, "miles");
     let y = this.getMinMaxRanges(cars, "year");
 
     let filterViewModel = new FilterViewModel();
-    filterViewModel.price = {min: p.min, max: p.max}
-    filterViewModel.miles = {min: m.min, max: m.max}
-    filterViewModel.year = {min: y.min, max: y.max}
+    filterViewModel.price = {min: p.min, max: p.max};
+    filterViewModel.miles = {min: m.min, max: m.max};
+    filterViewModel.year = {min: y.min, max: y.max};
     return filterViewModel;
   }
 

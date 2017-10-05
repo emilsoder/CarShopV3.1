@@ -25,6 +25,7 @@
 .details-grid > tr {
   border-bottom: 1px solid lightgrey;
 }
-#ejControl_0 > div.e-gridcontent{
+
+#ejControl_0 > div.e-gridcontent {
   overflow: scroll !important;
 }

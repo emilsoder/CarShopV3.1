@@ -4,17 +4,11 @@ import {ImageViewModel} from "../models/ImageViewModel";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/map'
 import {Image} from "../components/auction-list/auction-list.component";
-import {tryCatch} from "rxjs/util/tryCatch";
 import 'rxjs/Rx';
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {Headers} from "@angular/http";
-import {Http, Response} from "@angular/http";
-import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch'
 import 'rxjs/add/operator/take'
 import 'rxjs/observable/throw'
 import 'rxjs/Observable';
-import 'rxjs/Rx';
 import {LocalstorageService} from "../../shared/services/localstorage.service";
 
 @Injectable()
@@ -25,7 +19,7 @@ export class ImageService {
   }
 
   getImages(): Observable<Image[]> {
-    var storedImages = localStorage.getItem("imagelist")
+    var storedImages = localStorage.getItem("imagelist");
     if (!storedImages) {
       this.httpService.getData("http://localhost:22292/images/list").map(x => {
         localStorage.setItem("imagelist", JSON.stringify(x.json() as Image[]));

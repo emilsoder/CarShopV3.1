@@ -14,6 +14,7 @@ import {
   MdInputModule,
   MdListModule,
   MdMenuModule,
+  MdNativeDateModule,
   MdPaginatorModule,
   MdProgressBarModule,
   MdProgressSpinnerModule,
@@ -25,12 +26,11 @@ import {
   MdSlideToggleModule,
   MdSnackBarModule,
   MdSortModule,
+  MdStepperModule,
   MdTableModule,
   MdTabsModule,
   MdToolbarModule,
   MdTooltipModule,
-  MdStepperModule,
-  MdNativeDateModule,
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 

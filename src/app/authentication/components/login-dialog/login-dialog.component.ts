@@ -3,7 +3,6 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
 import {UserService} from "../../services/user.service";
 import {IRegisterUser, RegisterUser} from "../../../shared/interfaces/IRegisterUser";
-import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-login-dialog',
@@ -50,7 +49,7 @@ export class LoginDialogComponent {
           this.isError = response.ok ? false : true;
         },
         error => {
-          console.log(error)
+          console.log(error);
           this.isError = true;
         });
   }

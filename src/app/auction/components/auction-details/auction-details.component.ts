@@ -11,7 +11,6 @@ import {CurrentUserService} from "../../../shared/services/currentuser.service";
 import {IBid} from "../../../shared/interfaces/IBid";
 import * as _ from "lodash";
 import {StatusDialogComponent} from "../../../layout/dialog/status-dialog.component";
-import {DialogViewModel} from "../../../shared/viewmodels/DialogViewModel";
 import {MdDialog} from "@angular/material";
 import {Response} from "@angular/http";
 import {LoginDialogComponent} from "../../../authentication/components/login-dialog/login-dialog.component";
@@ -24,13 +23,13 @@ import {LoginDialogComponent} from "../../../authentication/components/login-dia
 })
 
 export class AuctionDetailsComponent implements OnInit, OnDestroy {
-  private subscriptions: Subscription[] = [];
   public isUserLoggedIn: boolean = false;
   public bidHistory: any;
   public car: ICar = new ICar();
   public _images: any = {} || [];
   public bidPrice: number;
   public minimumBidPrice: number = 0;
+  private subscriptions: Subscription[] = [];
   private alive: boolean = true;
   private clicked: boolean = false;
 
@@ -45,13 +44,8 @@ export class AuctionDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.loadData()
+    this.loadData();
     this.setScripts();
-  }
-
-  private loadData(): void {
-    this.loadImages();
-    this.loadCar();
   }
 
   public openLoginDialog(): void {
@@ -66,11 +60,52 @@ export class AuctionDetailsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(sub)
   }
 
-
   public setGridScroll() {
     if (!this.clicked)
       $('.e-gridcontent').css("overflow-x", "scroll");
     this.clicked = true;
+  }
+
+  public formatDate(date: string): string {
+    return new Date(date).toLocaleDateString("en-US");
+  }
+
+  public createBid(): void {
+    if (this.bidPrice <= this.minimumBidPrice || !this.bidPrice)
+      return;
+
+    let bid: CreateBid = {
+      bidPrice: this.bidPrice,
+      carId: this.car.id,
+      bidderId: 0
+    };
+
+    this.bidService.createBid(bid).subscribe(response => {
+      this.createDialogModel(response);
+    }, (error2 => this.createDialogModel(error2)));
+  }
+
+  public changeImage(direction: string) {
+    $("#myCarousel").carousel(direction);
+  }
+
+  public closeThis() {
+    this.resetView();
+    this.router.navigate(['auctions']);
+  }
+
+  ngOnDestroy(): void {
+    this.resetView();
+    if (this.subscriptions) {
+      this.subscriptions.forEach(x => {
+        if (x) x.unsubscribe();
+      })
+    }
+  }
+
+  private loadData(): void {
+    this.loadImages();
+    this.loadCar();
   }
 
   private loadImages() {
@@ -97,27 +132,8 @@ export class AuctionDetailsComponent implements OnInit, OnDestroy {
         }
       }
       return this.bidHistory = x as IBid[];
-    })
+    });
     this.subscriptions.push(sub);
-  }
-
-  public formatDate(date: string): string {
-    return new Date(date).toLocaleDateString("en-US");
-  }
-
-  public createBid(): void {
-    if (this.bidPrice <= this.minimumBidPrice || !this.bidPrice)
-      return;
-
-    let bid: CreateBid = {
-      bidPrice: this.bidPrice,
-      carId: this.car.id,
-      bidderId: 0
-    };
-
-    this.bidService.createBid(bid).subscribe(response => {
-      this.createDialogModel(response);
-    }, (error2 => this.createDialogModel(error2)));
   }
 
   private createDialogModel(response: Response) {
@@ -131,7 +147,7 @@ export class AuctionDetailsComponent implements OnInit, OnDestroy {
       message: response.ok
         ? "Bid was successfully placed"
         : "Bid could not be processed. Please see error message below."
-    }
+    };
     this.openDialog(model);
   }
 
@@ -145,15 +161,6 @@ export class AuctionDetailsComponent implements OnInit, OnDestroy {
       this.router.navigate(["/auctions"]);
     });
     this.subscriptions.push(sub)
-  }
-
-  public changeImage(direction: string) {
-    $("#myCarousel").carousel(direction);
-  }
-
-  public closeThis() {
-    this.resetView();
-    this.router.navigate(['auctions']);
   }
 
   private resetView() {
@@ -172,14 +179,5 @@ export class AuctionDetailsComponent implements OnInit, OnDestroy {
       });
       return false;
     });
-  }
-
-  ngOnDestroy(): void {
-    this.resetView();
-    if (this.subscriptions) {
-      this.subscriptions.forEach(x => {
-        if (x) x.unsubscribe();
-      })
-    }
   }
 }

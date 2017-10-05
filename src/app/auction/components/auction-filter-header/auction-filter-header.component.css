@@ -1,26 +1,27 @@
 @media (max-width: 676px) {
-    .w3-select.w3-border {
-        width: 100% !important;
-    }
+  .w3-select.w3-border {
+    width: 100% !important;
+  }
 
-    .w3-input.w3-border.w3-right {
-        width: 100% !important;
-    }
+  .w3-input.w3-border.w3-right {
+    width: 100% !important;
+  }
 }
 
 .w3-select.w3-border {
-    width: auto;
-    padding: 5px;
+  width: auto;
+  padding: 5px;
 }
 
 .w3-input.w3-border.w3-right {
-    width: 100%;
-    padding: 5px;
+  width: 100%;
+  padding: 5px;
 }
 
 .w3-third {
-    padding: 5px;
+  padding: 5px;
 }
-.w3-third.text-center{
-    padding: 0;
+
+.w3-third.text-center {
+  padding: 0;
 }

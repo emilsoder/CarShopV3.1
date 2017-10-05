@@ -1,23 +1,24 @@
 export class Car {
-    id: number;
-    registrationNumber: string;
-    brand: string;
-    model:  string;
-    year: number;
-    miles: number;
-    price: number;
-    color:  string;
-    description:  string;
-    sold: boolean;
-    sellerId: number;
-    soldDate: any;
-    soldPrice: number;
-    buyerId: number;
-    createdDate: number;
-    updatedDate: number;
+  id: number;
+  registrationNumber: string;
+  brand: string;
+  model: string;
+  year: number;
+  miles: number;
+  price: number;
+  color: string;
+  description: string;
+  sold: boolean;
+  sellerId: number;
+  soldDate: any;
+  soldPrice: number;
+  buyerId: number;
+  createdDate: number;
+  updatedDate: number;
 
-    imagePath: string;
+  imagePath: string;
 }
+
 //
 // export class Car{
 //     id: number;

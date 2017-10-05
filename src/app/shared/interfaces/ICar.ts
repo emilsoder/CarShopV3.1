@@ -17,6 +17,7 @@ export class ICar {
   createdDate: string;
   updatedDate: string;
 }
+
 //
 // export class ICar implements ICar {
 //   id: number;

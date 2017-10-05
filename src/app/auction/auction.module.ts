@@ -1,27 +1,20 @@
 import {NgModule} from '@angular/core';
 
 import {
+  AuctionDetailsComponent,
   AuctionFilterComponent,
-  AuctionListComponent,
   AuctionFilterHeaderComponent,
-  AuctionMainComponent,
-  AuctionDetailsComponent
+  AuctionListComponent,
+  AuctionMainComponent
 } from "./components/components";
 
-import {
-  AuctionService,
-  ImageService,
-  AuctionFilterService
-} from "./services/services"
+import {AuctionFilterService, AuctionService, ImageService} from "./services/services"
 
-import {
-  FindImagePipe,
-  AuctionFilterPipe,
-} from "./pipes/pipes"
+import {AuctionFilterPipe, FindImagePipe,} from "./pipes/pipes"
 
 import {OrderByPipe} from "../shared/pipes/pipes";
 import {GlobalState} from "../shared/observers/_global";
-import {PubSubService, HttpService} from "../shared/services/services";
+import {HttpService, PubSubService} from "../shared/services/services";
 import {SharedBaseModule} from "../shared/modules/shared.base.module";
 import {LocalstorageService} from "../shared/services/localstorage.service";
 import {BrandsPipe} from './pipes/brands.pipe';

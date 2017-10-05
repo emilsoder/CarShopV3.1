@@ -11,14 +11,14 @@ import {AppRoutingModule} from "../app-routing.module";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpModule} from "@angular/http";
 import {LocalstorageService} from "../shared/services/localstorage.service";
-import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import {LoginDialogComponent} from './components/login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
 
     LoginComponent,
     RegisterComponent,
-     LoginDialogComponent
+    LoginDialogComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +39,7 @@ import { LoginDialogComponent } from './components/login-dialog/login-dialog.com
   exports: [
     LoginComponent,
     RegisterComponent,
-     LoginDialogComponent
+    LoginDialogComponent
   ]
 })
 export class AuthenticationModule {

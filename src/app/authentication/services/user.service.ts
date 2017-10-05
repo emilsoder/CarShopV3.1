@@ -1,9 +1,7 @@
 ﻿import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import {Response} from '@angular/http';
 
 import {AuthenticationEndPoint, UserInfoEndPoint} from "../../shared/common/endpoints";
-import {LocalstorageService} from "../../shared/services/localstorage.service";
-import {ILoginResponse} from "../../shared/interfaces/ILoginResponse";
 import {IRegisterUser} from "../../shared/interfaces/IRegisterUser";
 import {Observable} from "rxjs/Observable";
 import {IRole} from "../models/role";

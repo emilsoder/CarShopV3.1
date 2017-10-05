@@ -1,4 +1,3 @@
-
 export class model {
   i: number;
   n: string; //WE WANT

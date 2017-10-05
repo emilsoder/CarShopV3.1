@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {HttpService} from "../../shared/services/http.service";
 import {FilterEndpoint} from "../../shared/common/endpoints";
-import {Category, Maker} from "../models/Category";
 import {ColorViewModel} from "../models/FilterViewModel";
 import {GlobalState} from "../../shared/observers/_global";
 

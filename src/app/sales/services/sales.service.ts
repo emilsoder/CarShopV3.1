@@ -22,7 +22,7 @@ export class SalesService {
   private formatUglyDates(cars: ICar[]): ICar[] {
     cars.forEach(x => {
       x.soldDate = new Date(Date.parse(x.soldDate)).toLocaleDateString('en-US');
-      x.createdDate = new Date(Date.parse(x.createdDate)).toLocaleDateString('en-US')
+      x.createdDate = new Date(Date.parse(x.createdDate)).toLocaleDateString('en-US');
       x.updatedDate = new Date(Date.parse(x.updatedDate)).toLocaleDateString('en-US')
     });
     return cars;

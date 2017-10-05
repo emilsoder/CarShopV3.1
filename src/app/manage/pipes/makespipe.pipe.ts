@@ -4,16 +4,14 @@ import {brands} from "../models/makes";
 @Pipe({
   name: 'makesFilterPipe'
 })
+
 export class MakesPipe implements PipeTransform {
-
   transform(items: brands[], inputText: any = ""): any {
-    if (!items) {
-      return [] || items;
-    }
-    if (!inputText || inputText.length <= 0) {
-      return items;
-    }
-
-    return items.filter(x => x.n.toLowerCase().indexOf(inputText.toLowerCase()) !== -1)
+    return !items ? [] || items
+      : !inputText || inputText.length <= 0
+        ? items
+        : items.filter(x => {
+          return x.n.toLowerCase().indexOf(inputText.toLowerCase()) !== -1;
+        });
   }
 }

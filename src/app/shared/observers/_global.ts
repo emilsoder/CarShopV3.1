@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
-import {Subscription} from "rxjs/Subscription";
 
 @Injectable()
 export class GlobalState {
@@ -33,15 +32,15 @@ export class GlobalState {
     this._subscriptions.set(event, subscribers);
   }
 
+  public unsubscribe(event: string) {
+    this._subscriptions.delete(event);
+  }
+
   private _onEvent(data: any) {
     let subscribers = this._subscriptions.get(data['event']) || [];
 
     subscribers.forEach((callback) => {
       callback.call(null, data['data']);
     });
-  }
-
-  public unsubscribe(event: string) {
-    this._subscriptions.delete(event);
   }
 }

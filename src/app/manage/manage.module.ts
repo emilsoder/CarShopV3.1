@@ -12,6 +12,9 @@ import {CurrentUserService} from "../shared/services/currentuser.service";
 import {EJAngular2Module} from "ej-angular2";
 import {UpdateDialogComponent} from './components/update-dialog/update-dialog.component';
 import {StatusDialogComponent} from '../layout/dialog/status-dialog.component';
+import {UpdateDialogService} from "./services/update-dialog.service";
+import {AddService} from "./services/add.service";
+import {UpdateService} from "./services/update.service";
 
 @NgModule({
   imports: [
@@ -34,7 +37,10 @@ import {StatusDialogComponent} from '../layout/dialog/status-dialog.component';
     ManageService,
     LocalstorageService,
     HttpService,
-    CurrentUserService
+    CurrentUserService,
+    UpdateDialogService,
+    AddService,
+    UpdateService
   ],
   entryComponents: [
     UpdateDialogComponent,

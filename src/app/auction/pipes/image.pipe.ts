@@ -1,5 +1,4 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import * as _ from "lodash";
 import {Image} from "../components/auction-list/auction-list.component";
 
 @Pipe({
@@ -10,7 +9,7 @@ export class FindImagePipe implements PipeTransform {
 
     let imglist: Image[] = [];
     if (!items || items.length <= 0) {
-       imglist.push({id: 0, url: "../assets/media/placeholder.png", carIdentifier: carId});
+      imglist.push({id: 0, url: "../assets/media/placeholder.png", carIdentifier: carId});
       return imglist;
     }
 

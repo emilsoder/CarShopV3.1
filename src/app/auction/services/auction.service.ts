@@ -2,13 +2,8 @@
 import {Observable} from "rxjs/Observable";
 import {HttpService} from "../../shared/services/http.service";
 import {AuctionEndPoint} from "../../shared/common/endpoints";
-import {Car} from "../models/AuctionList";
 import 'rxjs/add/operator/map'
-import {Auction} from "../models/Auction";
-import {FilterViewModel} from "../models/FilterViewModel";
 import {GlobalState} from "../../shared/observers/_global";
-import {MinMaxViewModel} from "../models/MinMaxViewModel";
-import {forEach} from "@angular/router/src/utils/collection";
 import {EventFireing} from "../shared/events";
 import {ICar} from "../../shared/interfaces/ICar";
 
@@ -31,7 +26,7 @@ export class AuctionService {
   public getAuctions(): Observable<ICar[]> {
     return this.apiService.getData(AuctionEndPoint.getall)
       .map(res => {
-        let notSoldCars = (res.json() as ICar[]).filter(x => x.sold !== true)
+        let notSoldCars = (res.json() as ICar[]).filter(x => x.sold !== true);
         this.fireEvents(notSoldCars);
         return res.json() as ICar[];
       });
@@ -73,7 +68,7 @@ export class AuctionService {
     newArr.forEach(brand => {
       if (brand !== null)
         return brandModelsArray.push({brand: brand.toLowerCase(), models: []});
-    })
+    });
 
     for (const car of cars) {
       if (car.brand === null || car.model === null) continue;

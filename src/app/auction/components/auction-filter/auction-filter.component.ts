@@ -14,28 +14,17 @@ import {OrderByPipe} from "../../../shared/pipes/orderby.pipe";
 })
 
 export class AuctionFilterComponent implements OnInit, OnDestroy {
-  public _currentFilter: FilterViewModel = this.currentFilter;
   public makers: string[] = [];
   public colors: string[] = [];
-
-  private  sub1: string = "rangeFilterChanged";
-  private   sub2: string = "brands";
-  private   sub3: string = "colors";
+  private sub1: string = "rangeFilterChanged";
+  private sub2: string = "brands";
+  private sub3: string = "colors";
 
   constructor(private filterService: AuctionFilterService,
               private _state: GlobalState) {
   }
 
-  ngOnInit() {
-    AuctionFilterComponentScripts.setJqueryEvents();
-    this.subscribeToFilterEvents();
-  }
-
-  private subscribeToFilterEvents() {
-    this._state.subscribe('rangeFilterChanged', (filter: FilterViewModel) => (this._currentFilter = filter));
-    this._state.subscribe("brands", (brands: string[]) => (this.makers = brands));
-    this._state.subscribe('colors', (colors: string[]) => (this.colors = colors));
-  }
+  public _currentFilter: FilterViewModel = this.currentFilter;
 
   get currentFilter(): FilterViewModel {
     return this._currentFilter = AuctionFilterPipe.filterViewModel;
@@ -46,18 +35,23 @@ export class AuctionFilterComponent implements OnInit, OnDestroy {
     AuctionFilterPipe.filterViewModel = this._currentFilter;
   }
 
- public setColors(color: string) {
-    console.log(color)
+  ngOnInit() {
+    AuctionFilterComponentScripts.setJqueryEvents();
+    this.subscribeToFilterEvents();
+  }
+
+  public setColors(color: string) {
+    console.log(color);
     if (this._currentFilter.colors.find(x => x == color))
       this._currentFilter.colors = this._currentFilter.colors.filter(e => e !== color);
 
     else
       this._currentFilter.colors.push(color);
-    console.log(this._currentFilter)
+    console.log(this._currentFilter);
     this._state.notifyDataChanged('filter', this._currentFilter);
   }
 
-  public   setBrand(brand: string) {
+  public setBrand(brand: string) {
     if (brand === 'any') this._currentFilter.brands = [];
     else if (this._currentFilter.brands.find(x => x == brand))
       this._currentFilter.brands = this._currentFilter.brands.filter(e => e !== brand);
@@ -74,10 +68,16 @@ export class AuctionFilterComponent implements OnInit, OnDestroy {
     this._state.unsubscribe(this.sub2);
     this._state.unsubscribe(this.sub3);
   }
+
+  private subscribeToFilterEvents() {
+    this._state.subscribe('rangeFilterChanged', (filter: FilterViewModel) => (this._currentFilter = filter));
+    this._state.subscribe("brands", (brands: string[]) => (this.makers = brands));
+    this._state.subscribe('colors', (colors: string[]) => (this.colors = colors));
+  }
 }
 
 export class AuctionFilterComponentScripts {
-  public  static setJqueryEvents(): void {
+  public static setJqueryEvents(): void {
     let hasBeenCollapsed = 0;
     $(function () {
       onWindowResize(false);

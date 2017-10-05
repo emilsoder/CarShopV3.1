@@ -1,5 +1,5 @@
 ﻿import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from "../../services/services";
 import {LocalstorageService} from "../../../shared/services/localstorage.service";
 
@@ -10,7 +10,7 @@ import {LocalstorageService} from "../../../shared/services/localstorage.service
 
 export class LoginComponent implements OnInit {
   public model: any = {};
-   public returnUrl: string;
+  public returnUrl: string;
   public isError: boolean = false;
 
   constructor(private route: ActivatedRoute,
@@ -20,12 +20,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   public login() {
-    this.storageService.clearData("currentUser")
-     this.authenticationService.login(this.model.username, this.model.password)
+    this.storageService.clearData("currentUser");
+    this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
