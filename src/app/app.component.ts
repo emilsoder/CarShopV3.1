@@ -24,3 +24,10 @@ export class AppComponent {
     });
   }
 }
+
+/*
+
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/w3-css/w3.css",
+        "../node_modules/syncfusion-javascript/Content/ej/web/material/ej.web.all.min.css",
+*/
