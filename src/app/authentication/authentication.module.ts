@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {LoginComponent, RegisterComponent, AlertComponent} from "./components/components";
-import {AuthenticationService, UserService, AlertService} from "./services/services";
+import {LoginComponent, RegisterComponent} from "./components/components";
+import {AuthenticationService, UserService} from "./services/services";
 
 import {MaterialComponentsModule} from "../layout/material-components/material-components.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -18,8 +18,7 @@ import { LoginDialogComponent } from './components/login-dialog/login-dialog.com
 
     LoginComponent,
     RegisterComponent,
-    AlertComponent,
-    LoginDialogComponent
+     LoginDialogComponent
   ],
   imports: [
     CommonModule,
@@ -35,14 +34,12 @@ import { LoginDialogComponent } from './components/login-dialog/login-dialog.com
   providers: [
     AuthenticationService,
     UserService,
-    AlertService,
     LocalstorageService
   ],
   exports: [
     LoginComponent,
     RegisterComponent,
-    AlertComponent,
-    LoginDialogComponent
+     LoginDialogComponent
   ]
 })
 export class AuthenticationModule {

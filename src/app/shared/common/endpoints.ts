@@ -9,11 +9,13 @@ export class AuctionEndPoint {
   public static update = BaseEndpoint.Url + "api/cars"; // PUT
 
   private static getById = BaseEndpoint.Url + "api/cars/"; // GET
-
-  // GET
   public static getbyid(id: number) {
     return AuctionEndPoint.getById + id;
   }
+}
+
+export class UserInfoEndPoint{
+  public static roles = BaseEndpoint.Url + "api/roles"
 }
 
 
@@ -26,12 +28,6 @@ export class BidEndpoint {
   public static getbyid(carId: number): string {
     return BaseEndpoint.Url + BidEndpoint._getBidsByCarId + carId + "/bids";
   }
-
-  // private static readonly _getbyid = "api/bids/";
-
-  // public static getbyid(id: number): string {
-  //   return BidEndpoint._getbyid + id;
-  // }
 }
 
 export class FilterEndpoint {

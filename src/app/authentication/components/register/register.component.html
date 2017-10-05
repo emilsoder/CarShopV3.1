@@ -1,173 +1,148 @@
-﻿<!--<div class="col-md-6 col-md-offset-3">-->
-  <!--<h2>Register</h2>-->
-  <!--<form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>-->
-    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !roleId.valid }">-->
-      <!--<label for="roleId">Role Id</label>-->
-      <!--<input type="text" class="form-control" name="roleId" [(ngModel)]="model.roleId" #roleId="ngModel" required/>-->
-      <!--<div *ngIf="f.submitted && !roleId.valid" class="help-block">roleId is required</div>-->
-    <!--</div>-->
-
-    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">-->
-      <!--<label for="firstName">First Name</label>-->
-      <!--<input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel"-->
-             <!--required/>-->
-      <!--<div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>-->
-    <!--</div>-->
-
-    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">-->
-      <!--<label for="lastName">Last Name</label>-->
-      <!--<input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"-->
-             <!--required/>-->
-      <!--<div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>-->
-    <!--</div>-->
-
-    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">-->
-      <!--<label for="email">Email</label>-->
-      <!--<input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required/>-->
-      <!--<div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>-->
-    <!--</div>-->
-
-    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">-->
-      <!--<label for="username">Username</label>-->
-      <!--<input type="text" class="form-control" name="username" [(ngModel)]="model.userName" #username="ngModel"-->
-             <!--required/>-->
-      <!--<div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>-->
-    <!--</div>-->
-
-    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">-->
-      <!--<label for="password">Password</label>-->
-      <!--<input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"-->
-             <!--required/>-->
-      <!--<div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>-->
-    <!--</div>-->
-
-    <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !confirmPassword.valid }">-->
-      <!--<label for="email">Confirm password</label>-->
-      <!--<input type="text" class="form-control" name="confirmPassword" [(ngModel)]="model.confirmPassword"-->
-             <!--#confirmPassword="ngModel" required/>-->
-      <!--<div *ngIf="f.submitted && !confirmPassword.valid" class="help-block">Field is required</div>-->
-    <!--</div>-->
-
-    <!--<div class="form-group">-->
-      <!--<button [disabled]="loading" class="btn btn-primary">Register</button>-->
-      <!--<img *ngIf="loading"-->
-           <!--src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>-->
-      <!--<a [routerLink]="['/login']" class="btn btn-link">Cancel</a>-->
-    <!--</div>-->
-  <!--</form>-->
-<!--</div>-->
-
-
-<div class="col-md-6 col-md-offset-3">
-  <h2>Register</h2>
-  <form class="example-form" (ngSubmit)="register()" #registerForm="ngForm" *ngIf="!isLoginView">
+﻿<div class="row">
+  <div class="col-md-6 col-md-offset-3">
     <md-card>
+      <md-card-header>
+        <h3> Register</h3>
+      </md-card-header>
       <md-card-content>
-        <table class="example-full-width" cellspacing="0">
+        <form class="example-form"
+              #registerForm="ngForm"
+              name="registerForm">
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td style="padding-top: 10px; padding-bottom:10px">
+                <md-select placeholder="User type"
+                           #reg_roleId
+                           name="reg_roleId"
+                           [required]="true"
+                           style="width: 100%"
+                           [(ngModel)]="registerModel.roleId">
 
-          <tr>
-            <td>
-              <md-form-field class="example-full-width">
-                <input mdInput
-                       placeholder="First name"
-                       [(ngModel)]="registerModel.firstName"
-                       [required]="true"
-                       #reg_firstName="ngModel">
-                <div *ngIf="registerForm.submitted && !reg_firstName.valid" style="color: red">First name is required
-                </div>
-              </md-form-field>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <md-form-field class="example-full-width">
-                <input mdInput
-                       placeholder="First name"
-                       [(ngModel)]="registerModel.lastName"
-                       [required]="true"
-                       #reg_lastName="ngModel">
-                <div *ngIf="registerForm.submitted && !reg_lastName.valid" style="color: red">Last name is required
-                </div>
-              </md-form-field>
-            </td>
-          </tr>
-
-          <!-- -------- -->
-
-          <tr>
-            <td>
-              <md-form-field class="example-full-width">
-                <input mdInput
-                       placeholder="Username"
-                       [(ngModel)]="registerModel.userName"
-                       [required]="true"
-                       #reg_username="ngModel">
-                <div *ngIf="registerForm.submitted && !reg_username.valid" style="color: red">Username is required</div>
-              </md-form-field>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <md-form-field class="example-full-width">
-                <input mdInput
-                       placeholder="Email"
-                       type="email"
-                       [(ngModel)]="registerModel.email"
-                       [required]="true"
-                       #reg_email="ngModel">
-                <div *ngIf="registerForm.submitted && !reg_username.valid" style="color: red">Email is required</div>
-              </md-form-field>
-            </td>
-          </tr>
-
-          <!-- -------- -->
-
-          <tr>
-            <td>
-              <md-form-field class="example-full-width">
-                <input mdInput
-                       placeholder="Password"
-                       [(ngModel)]="registerModel.password"
-                       [required]="true"
-                       type="password"
-                       #reg_password="ngModel">
-                <div *ngIf="registerForm.submitted && !password.valid" style="color: red">Password is required</div>
-              </md-form-field>
-            </td>
-          </tr>
-
-
-          <tr>
-            <td>
-              <md-form-field class="example-full-width">
-
-                <input mdInput
-                       placeholder="Password"
-                       [(ngModel)]="registerModel.confirmPassword"
-                       [required]="true"
-                       type="password"
-                       #reg_confirmPassword="ngModel">
-
-                <div *ngIf="registerForm.submitted && registerModel.password === registerModel.confirmPassword"
-                     style="color: red">Passwords do not match
-                </div>
-              </md-form-field>
-            </td>
-          </tr>
-
-        </table>
-
-        <label *ngIf="isError" style="color: red">Request failed. Please try again later.</label>
-
+                  <md-option *ngFor="let role of roles | async"
+                             [value]="role.id">
+                    {{role.name}}
+                  </md-option>
+                </md-select>
+                <md-error *ngIf="!reg_roleId.value">
+                  User type is <strong>required</strong>
+                </md-error>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-form-field class="example-full-width">
+                  <input mdInput
+                         placeholder="First name"
+                         [(ngModel)]="registerModel.firstName"
+                         [required]="true"
+                         #reg_firstName="ngModel"
+                         name="reg_firstName">
+                  <md-error *ngIf="reg_firstName.hasError('required')">
+                    First name is <strong>required</strong>
+                  </md-error>
+                </md-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-form-field class="example-full-width">
+                  <input mdInput
+                         placeholder="Last name"
+                         [(ngModel)]="registerModel.lastName"
+                         [required]="true"
+                         #reg_lastName="ngModel"
+                         name="reg_lastName">
+                  <md-error *ngIf="reg_lastName.hasError('required')">
+                    Last name is <strong>required</strong>
+                  </md-error>
+                </md-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-form-field class="example-full-width">
+                  <input mdInput
+                         placeholder="Username"
+                         [(ngModel)]="registerModel.userName"
+                         [required]="true"
+                         #reg_userName="ngModel"
+                         name="reg_userName">
+                  <md-error *ngIf="reg_userName.hasError('required')">
+                    Username is <strong>required</strong>
+                  </md-error>
+                </md-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-form-field class="example-full-width">
+                  <input mdInput
+                         placeholder="Email"
+                         type="email"
+                         [(ngModel)]="registerModel.email"
+                         [required]="true"
+                         #reg_email="ngModel"
+                         name="reg_email">
+                  <md-error *ngIf="reg_email.hasError('pattern')">
+                    Please enter a valid email address
+                  </md-error>
+                  <md-error *ngIf="reg_email.hasError('required')">
+                    Email is <strong>required</strong>
+                  </md-error>
+                </md-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-form-field class="example-full-width">
+                  <input mdInput
+                         placeholder="Password"
+                         [(ngModel)]="registerModel.password"
+                         [required]="true"
+                         type="password"
+                         #reg_password="ngModel"
+                         name="reg_password">
+                  <md-error *ngIf="reg_password.hasError('required')">
+                    Password is <strong>required</strong>
+                  </md-error>
+                </md-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-form-field class="example-full-width">
+                  <input mdInput
+                         placeholder="Password"
+                         [(ngModel)]="registerModel.confirmPassword"
+                         [required]="true"
+                         type="password"
+                         #reg_confirmPassword="ngModel"
+                         name="reg_confirmPassword">
+                  <md-error *ngIf="reg_confirmPassword.hasError('required')">
+                    First name is <strong>required</strong>
+                  </md-error>
+                  <md-error
+                    *ngIf="(reg_confirmPassword.value && reg_password.value)
+                    && (reg_confirmPassword.value !== reg_password.value)">
+                    <strong>Passwords do not match</strong>
+                  </md-error>
+                </md-form-field>
+              </td>
+            </tr>
+          </table>
+          <md-error *ngIf="isError">
+            <strong>Something in the shitty backend has fucked up. Please try again later</strong>
+          </md-error>
+        </form>
       </md-card-content>
       <md-card-actions>
-        <button md-raised-button color="primary" type="submit"
-                [disabled]="(!registerForm.form.valid )&&  registerModel.password === registerModel.confirmPassword">
-          Register
+        <button md-raised-button color="primary"
+                [disabled]="!registerForm.form.valid || reg_confirmPassword.value !== reg_password.value"
+                (click)="register()">
+          Submit
         </button>
+        <button md-raised-button style="float: right" routerLink="/login">Log in</button>
       </md-card-actions>
     </md-card>
-  </form>
+  </div>
 </div>

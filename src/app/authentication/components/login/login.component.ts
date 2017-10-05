@@ -1,6 +1,6 @@
 ﻿import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {AuthenticationService, AlertService} from "../../services/services";
+import {AuthenticationService} from "../../services/services";
 import {LocalstorageService} from "../../../shared/services/localstorage.service";
 
 @Component({
@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private authenticationService: AuthenticationService,
-              private alertService: AlertService,
               private storageService: LocalstorageService) {
   }
 

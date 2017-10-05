@@ -35,15 +35,11 @@ export class LoginDialogComponent {
           this.dialogRef.close(true);
         else
           this.isError = response.ok ? false : true;
-      }, (error2 => this.isError = true));
+      }, error2 => this.isError = true);
   }
 
 
   public register() {
-    // if (!(this.registerModel.password === this.registerModel.confirmPassword)) {
-    //   this.isError = true;
-    //   return;
-    // }
     this.userService.create(this.registerModel)
       .subscribe(response => {
           if (response.ok) {

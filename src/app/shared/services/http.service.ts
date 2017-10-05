@@ -21,6 +21,7 @@ export class HttpService {
   }
 
   public postData(actionEndpoint: string, model: any, headers: RequestOptions = null): Observable<Response> {
+    console.log(headers)
     return headers ? this.http.post(actionEndpoint, model, headers) : this.http.post(actionEndpoint, model);
   }
 
@@ -33,13 +34,20 @@ export class HttpService {
   }
 
   public authHeaders(): RequestOptions {
-    console.log(this.currentUser.getToken());
     let _headers = new Headers(
       {
         'Content-Type': 'application/x-www-form-urlencoded',
         "Authorization": "Bearer " + this.currentUser.getToken()
       });
     return new RequestOptions({headers: _headers});
+  }
+
+  public urlEncodedHeaders() {
+    let contentType = new Headers(
+      {
+        "Content-Type": "application/x-www-form-urlencoded"
+      });
+    return new RequestOptions({headers: contentType});
   }
 }
 
