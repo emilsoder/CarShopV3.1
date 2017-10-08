@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {AuthenticationService} from "../../services/authentication.service";
-import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {UserService} from "../../services/user.service";
 import {IRegisterUser, RegisterUser} from "../../../shared/interfaces/IRegisterUser";
 
@@ -18,9 +18,9 @@ export class LoginDialogComponent {
   public title: string = this.isLoginView ? "Login" : "Register";
 
   constructor(private authenticationService: AuthenticationService,
-              public dialogRef: MdDialogRef<LoginDialogComponent>,
+              public dialogRef: MatDialogRef<LoginDialogComponent>,
               private userService: UserService,
-              @Inject(MD_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   public onNoClick(): void {

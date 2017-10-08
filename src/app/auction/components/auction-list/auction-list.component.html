@@ -1,26 +1,26 @@
 ﻿<div class="row equal">
-  <div class="col-sm-6 col-md-4"
+  <div class="col-sm-6 col-mat-4"
        *ngFor="let car of carsAsync | async | auctionFilter: _filter"
        style="margin-bottom: 15px;">
 
-    <md-card class="example-card" id="auction_{{car.id}}">
+    <mat-card class="example-card" id="auction_{{car.id}}">
 
-      <md-card-header [routerLink]="['details', car.id]"
+      <mat-card-header [routerLink]="['details', car.id]"
                       style="cursor: pointer; display: block;">
-        <md-card-title>
+        <mat-card-title>
           <div style="white-space: nowrap; max-width: 120em; overflow: hidden; text-overflow: ellipsis;">
             {{car.description}}
           </div>
-        </md-card-title>
-      </md-card-header>
+        </mat-card-title>
+      </mat-card-header>
 
       <img [routerLink]="['details', car.id]"
-           md-card-image
+           mat-card-image
            *ngFor="let img of images | findImage:car.id"
            src="{{img.url}}" alt="car"
            style="cursor: pointer;">
 
-      <md-card style="padding: 0;margin-left: -16px; margin-right: -16px;">
+      <mat-card style="padding: 0;margin-left: -16px; margin-right: -16px;">
         <table class="table" style="font-size: small">
           <tr>
             <th>Year</th>
@@ -39,15 +39,15 @@
             <td>{{car.price}} &nbsp; SEK</td>
           </tr>
         </table>
-      </md-card>
+      </mat-card>
 
-      <md-card-actions>
+      <mat-card-actions>
         <button [routerLink]="['details', car.id]"
-                md-raised-button
+                mat-raised-button
                 color="primary"
                 style="width: 100% ">Details
         </button>
-      </md-card-actions>
-    </md-card>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>

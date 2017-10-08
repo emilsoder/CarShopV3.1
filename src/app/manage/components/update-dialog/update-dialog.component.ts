@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {FormControl} from "@angular/forms";
 import {brands} from "../../models/makes";
 import {ICar} from "../../../shared/interfaces/ICar";
@@ -22,9 +22,9 @@ export class UpdateDialogComponent {
   public soldFieldsRequired: boolean = false;
 
   constructor(private manageService: ManageService,
-              public dialogRef: MdDialogRef<UpdateDialogComponent>,
+              public dialogRef: MatDialogRef<UpdateDialogComponent>,
               private dialogService: UpdateDialogService,
-              @Inject(MD_DIALOG_DATA) public data: any) {
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     this.car = data;
     this.colors = this.manageService.getColors();
     this.getBrands();

@@ -7,38 +7,38 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <button md-button style="height: 50px;" class="navbar-brand" routerLink="/">CarShop v3</button>
+        <button mat-button style="height: 50px;" class="navbar-brand" routerLink="/">CarShop v3</button>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li>
-            <button md-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+            <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
                     style="height: 50px; width: 100%; text-align: left">
               Home
             </button>
           </li>
           <li>
-            <button md-button routerLink="/auctions" routerLinkActive="active"
+            <button mat-button routerLink="/auctions" routerLinkActive="active"
                     style="height: 50px; width: 100%; text-align: left"> Products
             </button>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right" *ngIf="!currentUser.isLoggedIn()">
           <li>
-            <button md-button routerLink="/register" style="height: 50px; width: 100%; text-align: left"> Register
+            <button mat-button routerLink="/register" style="height: 50px; width: 100%; text-align: left"> Register
             </button>
           </li>
           <li>
-            <button md-button routerLink="/login" style="height: 50px; width: 100%; text-align: left">Login</button>
+            <button mat-button routerLink="/login" style="height: 50px; width: 100%; text-align: left">Login</button>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right" *ngIf="currentUser.isLoggedIn()">
           <li *ngIf="currentUser.currentUserIsSeller()">
-            <button md-button routerLink="/dashboard" style="height: 50px; width: 100%; text-align: left">Dashboard
+            <button mat-button routerLink="/dashboard" style="height: 50px; width: 100%; text-align: left">Dashboard
             </button>
           </li>
           <li>
-            <button (click)="currentUser.logOut();" md-button
+            <button (click)="currentUser.logOut();" mat-button
                     style="cursor: pointer; height: 50px; width: 100%; text-align: left">Logout
             </button>
           </li>

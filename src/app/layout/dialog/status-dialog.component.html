@@ -1,12 +1,12 @@
-<h1 md-dialog-title>
+<h1 mat-dialog-title>
   {{data.title}}
 </h1>
-<div md-dialog-content>
+<div mat-dialog-content>
   <h3> {{data.message}}</h3>
 
   <div *ngIf="data.subModel">
     <hr>
-    <md-card>
+    <mat-card>
       <table class="table table-bordered table-responsive table-condensed table-default"
              style="width: 100%;">
         <tr *ngFor="let item of objectViewModel">
@@ -14,12 +14,12 @@
           <td>{{item.value}}</td>
         </tr>
       </table>
-    </md-card>
+    </mat-card>
   </div>
 </div>
 
-<div md-dialog-actions>
-  <button md-raised-button
+<div mat-dialog-actions>
+  <button mat-raised-button
           color="primary"
           (click)="cancel()"
           tabindex="0">

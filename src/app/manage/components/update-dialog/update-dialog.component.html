@@ -1,137 +1,137 @@
-<h1 md-dialog-title>Update car</h1>
-<div md-dialog-content>
+<h1 mat-dialog-title>Update car</h1>
+<div mat-dialog-content>
   <form class="example-form" #loginForm="ngForm">
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
-          <md-form-field class="example-full-width">
+          <mat-form-field class="example-full-width">
             <input #colorInputField
                    type="text"
                    placeholder="Color"
                    name="color"
                    aria-label="Color"
-                   mdInput
+                   matInput
                    [formControl]="colorControl"
-                   [mdAutocomplete]="autoColors"
+                   [matAutocomplete]="autoColors"
                    [required]="true"
                    [(ngModel)]="car.color">
-            <md-autocomplete #autoColors="mdAutocomplete">
-              <md-option *ngFor="let color of colors | async"
+            <mat-autocomplete #autoColors="matAutocomplete">
+              <mat-option *ngFor="let color of colors | async"
                          [value]="color">
                 {{ color }}
-              </md-option>
-            </md-autocomplete>
-          </md-form-field>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         </td>
         <td>
-          <md-form-field class="example-full-width">
+          <mat-form-field class="example-full-width">
             <input #makesInputField
                    type="text"
                    placeholder="Brand"
                    name="brands"
                    aria-label="Brand"
-                   mdInput
+                   matInput
                    [formControl]="makesControl"
-                   [mdAutocomplete]="autoMakes"
+                   [matAutocomplete]="autoMakes"
                    (blur)="modelsInputField.value = ''; models = []; makesOnBlur(makesInputField.value);"
                    [required]="true"
                    [(ngModel)]="car.brand">
-            <md-autocomplete #autoMakes="mdAutocomplete">
-              <md-option *ngFor="let make of brands  | makesFilterPipe: makesInputField.value" [value]="make.n">
+            <mat-autocomplete #autoMakes="matAutocomplete">
+              <mat-option *ngFor="let make of brands  | makesFilterPipe: makesInputField.value" [value]="make.n">
                 {{ make.n }}
-              </md-option>
-            </md-autocomplete>
-          </md-form-field>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         </td>
       </tr>
     </table>
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
-          <md-form-field class="example-full-width">
+          <mat-form-field class="example-full-width">
             <input #modelsInputField
                    type="text"
                    placeholder="Model"
                    name="models"
                    aria-label="Model"
-                   mdInput
+                   matInput
                    [formControl]="modelsControl"
-                   [mdAutocomplete]="autoModels"
+                   [matAutocomplete]="autoModels"
                    [required]="true"
                    [(ngModel)]="car.model">
 
-            <md-autocomplete #modelOptions #autoModels="mdAutocomplete">
-              <md-option *ngFor="let model of models" [value]="model">
+            <mat-autocomplete #modelOptions #autoModels="matAutocomplete">
+              <mat-option *ngFor="let model of models" [value]="model">
                 {{ model }}
-              </md-option>
-            </md-autocomplete>
-          </md-form-field>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
         </td>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput [required]="true" type="number" [(ngModel)]="car.miles" name="miles" placeholder="Miles"
+          <mat-form-field class="example-full-width">
+            <input matInput [required]="true" type="number" [(ngModel)]="car.miles" name="miles" placeholder="Miles"
                    #miles="ngModel"
                    value="{{car.miles}}">
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
     </table>
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput [required]="true" type="number" [(ngModel)]="car.price" name="price" #price="ngModel"
+          <mat-form-field class="example-full-width">
+            <input matInput [required]="true" type="number" [(ngModel)]="car.price" name="price" #price="ngModel"
                    placeholder="Start price (SEK)" value="{{car.price}}">
-          </md-form-field>
+          </mat-form-field>
         </td>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput [required]="true" type="text" [(ngModel)]="car.registrationNumber"
+          <mat-form-field class="example-full-width">
+            <input matInput [required]="true" type="text" [(ngModel)]="car.registrationNumber"
                    name="registrationNumber" placeholder="Registration number" #registrationNumber="ngModel"
                    value="{{car.registrationNumber}}">
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
     </table>
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput [required]="true" type="number" [(ngModel)]="car.year" name="year" value="{{car.year}}"
+          <mat-form-field class="example-full-width">
+            <input matInput [required]="true" type="number" [(ngModel)]="car.year" name="year" value="{{car.year}}"
                    #year="ngModel"
                    placeholder="First registration (year)" minlength="4" maxlength="4">
-          </md-form-field>
+          </mat-form-field>
         </td>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput [required]="true" type="number"
+          <mat-form-field class="example-full-width">
+            <input matInput [required]="true" type="number"
                    [(ngModel)]="car.sellerId" name="sellerId"
                    #sellerId="ngModel"
                    placeholder="Seller id" minlength="0"
                    value="{{car.sellerId}}">
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
     </table>
     <p>
-      <md-form-field class="example-full-width">
-      <textarea [required]="true" minlength="10" mdInput [(ngModel)]="car.description"
+      <mat-form-field class="example-full-width">
+      <textarea [required]="true" minlength="10" matInput [(ngModel)]="car.description"
                 name="description" #description="ngModel"
                 placeholder="Description">{{car.description}}</textarea>
-      </md-form-field>
+      </mat-form-field>
     </p>
-    <md-expansion-panel>
-      <md-expansion-panel-header>
-        <md-panel-title>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           Change sold status details
-        </md-panel-title>
-      </md-expansion-panel-header>
-      <md-card>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-card>
 
-        <md-checkbox #sold="ngModel" name="sold" [(ngModel)]="car.sold"
+        <mat-checkbox #sold="ngModel" name="sold" [(ngModel)]="car.sold"
                      (change)="soldFieldsRequired = sold.value">
           Is sold
-        </md-checkbox>
+        </mat-checkbox>
         <table class="example-full-width" cellspacing="0">
           <tr>
             <td>
@@ -140,46 +140,46 @@
           </tr>
           <tr>
             <td>
-              <md-form-field class="example-full-width">
-                <input [disabled]="soldFieldsRequired === false" mdInput name="soldDate" #soldDate="ngModel"
-                       [mdDatepicker]="soldDate"
+              <mat-form-field class="example-full-width">
+                <input [disabled]="soldFieldsRequired === false" matInput name="soldDate" #soldDate="ngModel"
+                       [matDatepicker]="soldDate"
                        [(ngModel)]="car.soldDate"
                        [(value)]="car.soldDate"
                        placeholder="Sold date"
                        [required]="soldFieldsRequired">
-                <md-datepicker-toggle mdSuffix [for]="soldDate"></md-datepicker-toggle>
-                <md-datepicker #soldDate></md-datepicker>
-              </md-form-field>
+                <mat-datepicker-toggle matSuffix [for]="soldDate"></mat-datepicker-toggle>
+                <mat-datepicker #soldDate></mat-datepicker>
+              </mat-form-field>
             </td>
           </tr>
         </table>
         <table class="example-full-width" cellspacing="0">
           <tr>
             <td>
-              <md-form-field class="example-full-width">
-                <input mdInput [disabled]="soldFieldsRequired === false" [required]="soldFieldsRequired" type="number"
+              <mat-form-field class="example-full-width">
+                <input matInput [disabled]="soldFieldsRequired === false" [required]="soldFieldsRequired" type="number"
                        [(ngModel)]="car.soldPrice" name="soldPrice" #soldPrice="ngModel"
                        placeholder="Sold price (SEK)" value="{{car.soldPrice}}">
-              </md-form-field>
+              </mat-form-field>
             </td>
             <td>
-              <md-form-field class="example-full-width">
-                <input mdInput [disabled]="soldFieldsRequired === false" [required]="soldFieldsRequired" type="number"
+              <mat-form-field class="example-full-width">
+                <input matInput [disabled]="soldFieldsRequired === false" [required]="soldFieldsRequired" type="number"
                        [(ngModel)]="car.buyerId"
                        name="buyerId" placeholder="Buyer ID" #buyerId="ngModel"
                        value="{{car.buyerId}}">
-              </md-form-field>
+              </mat-form-field>
             </td>
           </tr>
         </table>
-      </md-card>
-    </md-expansion-panel>
+      </mat-card>
+    </mat-expansion-panel>
     <hr>
   </form>
 </div>
-<div md-dialog-actions>
-  <button md-raised-button color="primary" [disabled]="!loginForm.form.valid" [md-dialog-close]="car">
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" [mat-dialog-close]="car">
     Update
   </button>
-  <button md-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
 </div>

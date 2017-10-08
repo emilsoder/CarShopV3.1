@@ -1,35 +1,35 @@
 ﻿<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-mat-6 col-mat-offset-3">
 
-    <md-card>
-      <md-card-header>
+    <mat-card>
+      <mat-card-header>
         <h3> Log in</h3>
-      </md-card-header>
+      </mat-card-header>
 
-      <md-card-content>
+      <mat-card-content>
 
         <form class="example-form" name="loginForm" #loginForm="ngForm">
           <table class="example-full-width" cellspacing="0">
             <tr>
               <td>
-                <md-form-field class="example-full-width">
-                  <input mdInput
+                <mat-form-field class="example-full-width">
+                  <input matInput
                          placeholder="Username"
                          [(ngModel)]="model.username"
                          [required]="true"
                          #username="ngModel"
                          name="username">
                   <div *ngIf="loginForm.submitted && !username.valid" style="color: red">Username is required</div>
-                  <md-error *ngIf="username.hasError('required')">
+                  <mat-error *ngIf="username.hasError('required')">
                     Username is <strong>required</strong>
-                  </md-error>
-                </md-form-field>
+                  </mat-error>
+                </mat-form-field>
               </td>
             </tr>
             <tr>
               <td>
-                <md-form-field class="example-full-width">
-                  <input mdInput
+                <mat-form-field class="example-full-width">
+                  <input matInput
                          placeholder="Password"
                          [(ngModel)]="model.password"
                          [required]="true"
@@ -37,30 +37,30 @@
                          type="password"
                          name="password">
                   <div *ngIf="loginForm.submitted && !password.valid" style="color: red">Password is required</div>
-                  <md-error *ngIf="password.hasError('required')">
+                  <mat-error *ngIf="password.hasError('required')">
                     Password is <strong>required</strong>
-                  </md-error>
-                </md-form-field>
+                  </mat-error>
+                </mat-form-field>
 
               </td>
             </tr>
           </table>
-          <md-error *ngIf="isError">
+          <mat-error *ngIf="isError">
             <strong>Something in the shitty backend has fucked up. Please try again later.</strong>
-          </md-error>
+          </mat-error>
         </form>
-      </md-card-content>
+      </mat-card-content>
 
-      <md-card-actions>
-        <button md-raised-button color="primary"
+      <mat-card-actions>
+        <button mat-raised-button color="primary"
                 [disabled]="!loginForm.form.valid"
                 (click)="login()">
           Log in
         </button>
 
-        <button md-raised-button style="float: right" routerLink="/register">Register</button>
-      </md-card-actions>
-    </md-card>
+        <button mat-raised-button style="float: right" routerLink="/register">Register</button>
+      </mat-card-actions>
+    </mat-card>
 
   </div>
 </div>

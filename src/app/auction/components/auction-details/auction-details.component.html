@@ -1,13 +1,13 @@
 ﻿<div id="detailsContainer">
-  <button md-raised-button color="warn" (click)="closeThis()">Close</button>
+  <button mat-raised-button color="warn" (click)="closeThis()">Close</button>
   <hr>
-  <md-tab-group>
-    <md-tab label="Car">
+  <mat-tab-group>
+    <mat-tab label="Car">
       <h1>{{car.brand + " " + car.model + " " + car.year}}</h1>
-      <md-card>
+      <mat-card>
         <div class="row" style="">
           <div class="col-sm-6">
-            <md-card style="height: 100%;">
+            <mat-card style="height: 100%;">
               <div id="myCarousel" class="carousel slide w3-card-4" data-ride="carousel" data-interval="false">
                 <div class="carousel-inner">
                   <div *ngFor="let image of _images | async" class="item {{image.active}}">
@@ -23,26 +23,26 @@
                   <span class="sr-only">Next</span>
                 </a>
               </div>
-            </md-card>
+            </mat-card>
           </div>
           <div class="col-sm-6" style="display: flex; align-items: stretch;">
-            <md-card style="height: 100%; width: 100%">
+            <mat-card style="height: 100%; width: 100%">
               <form class="example-form">
                 <table class="example-full-width">
                   <tr>
                     <td>
-                      <md-card>
+                      <mat-card>
                         <div class="example-full-width">
                           Current price: <b>{{minimumBidPrice}}</b>
                         </div>
-                      </md-card>
+                      </mat-card>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <md-card>
-                        <md-form-field class="example-full-width">
-                          <input mdInput
+                      <mat-card>
+                        <mat-form-field class="example-full-width">
+                          <input matInput
                                  [disabled]="!isUserLoggedIn"
                                  [required]="true"
                                  type="number"
@@ -52,49 +52,49 @@
                                  min="{{minimumBidPrice}}"
                                  #bidPriceInput="ngModel"
                                  value="{{bidPrice}}">
-                        </md-form-field>
-                      </md-card>
+                        </mat-form-field>
+                      </mat-card>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <md-card>
+                      <mat-card>
                         <div class="example-full-width">
                           <button *ngIf="isUserLoggedIn === true"
                                   [disabled]="bidPrice <= minimumBidPrice"
-                                  md-raised-button
+                                  mat-raised-button
                                   color="primary"
                                   (click)="createBid()"
                                   style="width: 100%">
                             Place bid
                           </button>
                           <button *ngIf="isUserLoggedIn === false"
-                                  md-raised-button
+                                  mat-raised-button
                                   color="primary"
                                   (click)="openLoginDialog()"
                                   style="width: 100%">
                             Login or register to bid
                           </button>
                         </div>
-                      </md-card>
+                      </mat-card>
                     </td>
                   </tr>
                 </table>
               </form>
-            </md-card>
+            </mat-card>
           </div>
         </div>
         <hr>
-        <md-tab-group (selectChange)="setGridScroll()">
-          <md-tab label="Description">
-            <md-card>
+        <mat-tab-group (selectChange)="setGridScroll()">
+          <mat-tab label="Description">
+            <mat-card>
               {{car.description}}
-            </md-card>
-            <md-card>
-              <md-card-content>
+            </mat-card>
+            <mat-card>
+              <mat-card-content>
                 <div class="row">
-                  <div class="col-md-4">
-                    <md-card>
+                  <div class="col-mat-4">
+                    <mat-card>
                       <table class="example-full-width details-grid" cellpadding="0">
                         <tr>
                           <td>Registration number:</td>
@@ -109,10 +109,10 @@
                           <td>{{car.year}}</td>
                         </tr>
                       </table>
-                    </md-card>
+                    </mat-card>
                   </div>
-                  <div class="col-md-4">
-                    <md-card>
+                  <div class="col-mat-4">
+                    <mat-card>
                       <table class="example-full-width details-grid" cellpadding="0">
                         <tr>
                           <td>Color:</td>
@@ -127,10 +127,10 @@
                           <td>{{car.model}}</td>
                         </tr>
                       </table>
-                    </md-card>
+                    </mat-card>
                   </div>
-                  <div class="col-md-4">
-                    <md-card>
+                  <div class="col-mat-4">
+                    <mat-card>
                       <table class="example-full-width details-grid" cellpadding="0">
                         <tr>
                           <td>Seller id:</td>
@@ -145,20 +145,20 @@
                           <td>{{formatDate(car.updatedDate)}}</td>
                         </tr>
                       </table>
-                    </md-card>
+                    </mat-card>
                   </div>
                 </div>
-              </md-card-content>
-            </md-card>
-          </md-tab>
-          <md-tab label="Bid history">
-            <md-card>
-              <md-card-header>
-                <label md-card-title>
+              </mat-card-content>
+            </mat-card>
+          </mat-tab>
+          <mat-tab label="Bid history">
+            <mat-card>
+              <mat-card-header>
+                <label mat-card-title>
                   Bidding history
                 </label>
-              </md-card-header>
-              <md-card-content>
+              </mat-card-header>
+              <mat-card-content>
                 <ej-grid [dataSource]='bidHistory'
                          [allowPaging]="true"
                          [allowSorting]='true'
@@ -170,19 +170,19 @@
                     <e-column field='createdDate' headerText='Date' textAlign='right' width=120></e-column>
                   </e-columns>
                 </ej-grid>
-              </md-card-content>
-            </md-card>
-          </md-tab>
-        </md-tab-group>
-      </md-card>
-    </md-tab>
-    <md-tab label="Images">
+              </mat-card-content>
+            </mat-card>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Images">
       <h1>Images</h1>
 
-      <md-card *ngFor="let img of _images | async">
+      <mat-card *ngFor="let img of _images | async">
         <img class="img-responsive" src="{{img.url}}"/>
-      </md-card>
+      </mat-card>
 
-    </md-tab>
-  </md-tab-group>
+    </mat-tab>
+  </mat-tab-group>
 </div>

@@ -1,125 +1,125 @@
 <div class="row" style="padding-left: 0; padding-right: 0;">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-mat-6 col-mat-offset-3">
     <form class="example-form" (ngSubmit)="addCarForm.form.valid && tryAddCarOnSubmit(addCarForm)" #addCarForm="ngForm">
-      <md-card>
+      <mat-card>
         <table class="example-full-width" cellspacing="1">
           <tr>
             <td>
-              <md-form-field class="example-full-width">
+              <mat-form-field class="example-full-width">
                 <input #colorInputField
                        type="text"
                        placeholder="Color"
                        name="color"
                        aria-label="Color"
-                       mdInput
+                       matInput
                        [formControl]="colorControl"
-                       [mdAutocomplete]="autoColors"
+                       [matAutocomplete]="autoColors"
                        [required]="true"
                        [(ngModel)]="car.color">
-                <md-autocomplete #autoColors="mdAutocomplete">
-                  <md-option *ngFor="let color of colors | async | autocompleteFilterPipe: colorInputField.value"
+                <mat-autocomplete #autoColors="matAutocomplete">
+                  <mat-option *ngFor="let color of colors | async | autocompleteFilterPipe: colorInputField.value"
                              [value]="color">
                     {{ color }}
-                  </md-option>
-                </md-autocomplete>
-              </md-form-field>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
             </td>
             <td>
-              <md-form-field class="example-full-width">
+              <mat-form-field class="example-full-width">
                 <input #makesInputField
                        type="text"
                        placeholder="Brand"
                        name="brands"
                        aria-label="Brand"
-                       mdInput
+                       matInput
                        [formControl]="makesControl"
-                       [mdAutocomplete]="autoMakes"
+                       [matAutocomplete]="autoMakes"
                        (blur)="modelsInputField.value = ''; models = []; makesOnBlur(makesInputField.value);"
                        [required]="true"
                        [(ngModel)]="car.brand">
-                <md-autocomplete #autoMakes="mdAutocomplete">
-                  <md-option *ngFor="let make of brands | makesFilterPipe: makesInputField.value"
+                <mat-autocomplete #autoMakes="matAutocomplete">
+                  <mat-option *ngFor="let make of brands | makesFilterPipe: makesInputField.value"
                              [value]="make.n">
                     {{ make.n }}
-                  </md-option>
-                </md-autocomplete>
-              </md-form-field>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
             </td>
             <td>
-              <md-form-field class="example-full-width">
+              <mat-form-field class="example-full-width">
                 <input #modelsInputField
                        type="text"
                        placeholder="Model"
                        name="models"
                        aria-label="Model"
-                       mdInput
+                       matInput
                        [formControl]="modelsControl"
-                       [mdAutocomplete]="autoModels"
+                       [matAutocomplete]="autoModels"
                        [required]="true"
                        [(ngModel)]="car.model">
-                <md-autocomplete #modelOptions
-                                 #autoModels="mdAutocomplete">
-                  <md-option *ngFor="let model of models"
+                <mat-autocomplete #modelOptions
+                                 #autoModels="matAutocomplete">
+                  <mat-option *ngFor="let model of models"
                              [value]="model">
                     {{ model }}
-                  </md-option>
-                </md-autocomplete>
-              </md-form-field>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
             </td>
           </tr>
         </table>
         <table class="example-full-width" cellspacing="1">
           <tr>
             <td>
-              <md-form-field class="example-full-width">
-                <input mdInput [required]="true" type="text" [(ngModel)]="car.registrationNumber"
+              <mat-form-field class="example-full-width">
+                <input matInput [required]="true" type="text" [(ngModel)]="car.registrationNumber"
                        name="registrationNumber"
                        placeholder="Registration number" #registrationNumber="ngModel"
                        value="{{car.registrationNumber}}">
-              </md-form-field>
+              </mat-form-field>
             </td>
             <td>
-              <md-form-field class="example-full-width">
-                <input mdInput [required]="true" type="number" [(ngModel)]="car.year" name="year" value="{{car.year}}"
+              <mat-form-field class="example-full-width">
+                <input matInput [required]="true" type="number" [(ngModel)]="car.year" name="year" value="{{car.year}}"
                        #year="ngModel"
                        placeholder="First registration (year)" minlength="4" maxlength="4">
-              </md-form-field>
+              </mat-form-field>
             </td>
           </tr>
         </table>
         <table class="example-full-width" cellspacing="1">
           <tr>
             <td>
-              <md-form-field class="example-full-width">
-                <input mdInput [required]="true" type="number" [(ngModel)]="car.miles" name="miles" placeholder="Miles"
+              <mat-form-field class="example-full-width">
+                <input matInput [required]="true" type="number" [(ngModel)]="car.miles" name="miles" placeholder="Miles"
                        #miles="ngModel"
                        value="{{car.miles}}">
-              </md-form-field>
+              </mat-form-field>
             </td>
             <td>
-              <md-form-field class="example-full-width">
-                <input mdInput [required]="true" type="number" [(ngModel)]="car.price" name="price" #price="ngModel"
+              <mat-form-field class="example-full-width">
+                <input matInput [required]="true" type="number" [(ngModel)]="car.price" name="price" #price="ngModel"
                        placeholder="Start price (SEK)" value="{{car.price}}">
-              </md-form-field>
+              </mat-form-field>
             </td>
           </tr>
         </table>
         <p>
-          <md-form-field class="example-full-width">
+          <mat-form-field class="example-full-width">
       <textarea [required]="true"
                 minlength="5"
-                mdInput
+                matInput
                 [(ngModel)]="car.description"
                 name="description"
                 #description="ngModel"
                 placeholder="Description">{{car.description}}</textarea>
-          </md-form-field>
+          </mat-form-field>
         </p>
-        <md-card-actions>
-          <button md-raised-button type="submit" color="primary" [disabled]="!addCarForm.form.valid">Submit</button>
-          <button md-button type="reset" style="float: right;">Clear fields</button>
-        </md-card-actions>
-      </md-card>
+        <mat-card-actions>
+          <button mat-raised-button type="submit" color="primary" [disabled]="!addCarForm.form.valid">Submit</button>
+          <button mat-button type="reset" style="float: right;">Clear fields</button>
+        </mat-card-actions>
+      </mat-card>
     </form>
   </div>
 </div>

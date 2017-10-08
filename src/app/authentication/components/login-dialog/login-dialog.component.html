@@ -1,28 +1,28 @@
-<h1 md-dialog-title>{{title}}</h1>
-<div md-dialog-content>
+<h1 mat-dialog-title>{{title}}</h1>
+<div mat-dialog-content>
 
   <form class="example-form" (ngSubmit)="loginForm.form.valid && login()" #loginForm="ngForm" *ngIf="isLoginView">
-    <button md-raised-button style="float: right"
+    <button mat-raised-button style="float: right"
             (click)="isLoginView = false">Register
     </button>
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput
+          <mat-form-field class="example-full-width">
+            <input matInput
                    placeholder="Username"
                    [(ngModel)]="loginModel.username"
                    [required]="true"
                    #username="ngModel"
                    name="userName">
             <div *ngIf="loginForm.submitted && !username.valid" style="color: red">Username is required</div>
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput
+          <mat-form-field class="example-full-width">
+            <input matInput
                    placeholder="Password"
                    [(ngModel)]="loginModel.password"
                    [required]="true"
@@ -30,17 +30,17 @@
                    type="password"
                    name="password">
             <div *ngIf="loginForm.submitted && !password.valid" style="color: red">Password is required</div>
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
     </table>
 
     <label *ngIf="isError" style="color: red">Request failed. Please try again with different credentials</label>
 
-    <button md-raised-button color="primary" type="submit"
+    <button mat-raised-button color="primary" type="submit"
             [disabled]="!loginForm.form.valid &&  !password.value || !username.value">Log in
     </button>
-    <button md-raised-button
+    <button mat-raised-button
             color="warn"
             (click)="loginForm.noValidate = true; onNoClick()">Cancel
     </button>
@@ -49,26 +49,26 @@
   <form class="example-form" (ngSubmit)="registerForm.form.valid && register()" #registerForm="ngForm"
         *ngIf="!isLoginView">
 
-    <button md-raised-button style="float: right"
+    <button mat-raised-button style="float: right"
             (click)="isLoginView = true">Login
     </button>
     <table class="example-full-width" cellspacing="0">
       <tr>
         <td>
-          <md-select placeholder="User type" #roleId name="reg_roleId" style="width: 100%">
-            <md-option [value]="2" (click)="registerModel.roleId = 2">
+          <mat-select placeholder="User type" #roleId name="reg_roleId" style="width: 100%">
+            <mat-option [value]="2" (click)="registerModel.roleId = 2">
               Seller
-            </md-option>
-            <md-option [value]="3" (click)="registerModel.roleId=3">
+            </mat-option>
+            <mat-option [value]="3" (click)="registerModel.roleId=3">
               Buyer
-            </md-option>
-          </md-select>
+            </mat-option>
+          </mat-select>
         </td>
       </tr>
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput
+          <mat-form-field class="example-full-width">
+            <input matInput
                    placeholder="First name"
                    [(ngModel)]="registerModel.firstName"
                    [required]="true"
@@ -76,14 +76,14 @@
                    name="reg_firstName">
             <div *ngIf="registerForm.submitted && !reg_firstName.valid" style="color: red">First name is required
             </div>
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
 
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput
+          <mat-form-field class="example-full-width">
+            <input matInput
                    placeholder="First name"
                    [(ngModel)]="registerModel.lastName"
                    [required]="true"
@@ -91,7 +91,7 @@
                    name="reg_lastName">
             <div *ngIf="registerForm.submitted && !reg_lastName.valid" style="color: red">Last name is required
             </div>
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
 
@@ -99,22 +99,22 @@
 
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput
+          <mat-form-field class="example-full-width">
+            <input matInput
                    placeholder="Username"
                    [(ngModel)]="registerModel.userName"
                    [required]="true"
                    #reg_username="ngModel"
                    name="reg_userName">
             <div *ngIf="registerForm.submitted && !reg_username.valid" style="color: red">Username is required</div>
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
 
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput
+          <mat-form-field class="example-full-width">
+            <input matInput
                    placeholder="Email"
                    type="email"
                    [(ngModel)]="registerModel.email"
@@ -122,7 +122,7 @@
                    #reg_email="ngModel"
                    name="reg_email">
             <div *ngIf="registerForm.submitted && !reg_username.valid" style="color: red">Email is required</div>
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
 
@@ -130,8 +130,8 @@
 
       <tr>
         <td>
-          <md-form-field class="example-full-width">
-            <input mdInput
+          <mat-form-field class="example-full-width">
+            <input matInput
                    placeholder="Password"
                    [(ngModel)]="registerModel.password"
                    [required]="true"
@@ -139,15 +139,15 @@
                    #reg_password="ngModel"
                    name="reg_password">
             <div *ngIf="registerForm.submitted && !reg_password.valid" style="color: red">Password is required</div>
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
 
       <tr>
         <td>
-          <md-form-field class="example-full-width">
+          <mat-form-field class="example-full-width">
 
-            <input mdInput
+            <input matInput
                    placeholder="Password"
                    [(ngModel)]="registerModel.confirmPassword"
                    [required]="true"
@@ -159,7 +159,7 @@
               *ngIf="(!reg_password.valid) && registerForm.submitted && registerModel.password === registerModel.confirmPassword"
               style="color: red">Passwords do not match
             </div>
-          </md-form-field>
+          </mat-form-field>
         </td>
       </tr>
 
@@ -167,11 +167,11 @@
 
     <label *ngIf="isError" style="color: red">Request failed. Please try again later.</label>
 
-    <button md-raised-button color="primary" type="submit"
+    <button mat-raised-button color="primary" type="submit"
             [disabled]="(!registerForm.form.valid )&&  registerModel.password === registerModel.confirmPassword">
       Register
     </button>
-    <button md-raised-button
+    <button mat-raised-button
             color="warn"
             (click)="registerForm.noValidate = true; onNoClick(); ">Cancel
     </button>

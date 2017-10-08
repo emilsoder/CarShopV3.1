@@ -1,148 +1,148 @@
 ﻿<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <md-card>
-      <md-card-header>
+  <div class="col-mat-6 col-mat-offset-3">
+    <mat-card>
+      <mat-card-header>
         <h3> Register</h3>
-      </md-card-header>
-      <md-card-content>
+      </mat-card-header>
+      <mat-card-content>
         <form class="example-form"
               #registerForm="ngForm"
               name="registerForm">
           <table class="example-full-width" cellspacing="0">
             <tr>
               <td style="padding-top: 10px; padding-bottom:10px">
-                <md-select placeholder="User type"
+                <mat-select placeholder="User type"
                            #reg_roleId
                            name="reg_roleId"
                            [required]="true"
                            style="width: 100%"
                            [(ngModel)]="registerModel.roleId">
 
-                  <md-option *ngFor="let role of roles | async"
+                  <mat-option *ngFor="let role of roles | async"
                              [value]="role.id">
                     {{role.name}}
-                  </md-option>
-                </md-select>
-                <md-error *ngIf="!reg_roleId.value">
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!reg_roleId.value">
                   User type is <strong>required</strong>
-                </md-error>
+                </mat-error>
               </td>
             </tr>
             <tr>
               <td>
-                <md-form-field class="example-full-width">
-                  <input mdInput
+                <mat-form-field class="example-full-width">
+                  <input matInput
                          placeholder="First name"
                          [(ngModel)]="registerModel.firstName"
                          [required]="true"
                          #reg_firstName="ngModel"
                          name="reg_firstName">
-                  <md-error *ngIf="reg_firstName.hasError('required')">
+                  <mat-error *ngIf="reg_firstName.hasError('required')">
                     First name is <strong>required</strong>
-                  </md-error>
-                </md-form-field>
+                  </mat-error>
+                </mat-form-field>
               </td>
             </tr>
             <tr>
               <td>
-                <md-form-field class="example-full-width">
-                  <input mdInput
+                <mat-form-field class="example-full-width">
+                  <input matInput
                          placeholder="Last name"
                          [(ngModel)]="registerModel.lastName"
                          [required]="true"
                          #reg_lastName="ngModel"
                          name="reg_lastName">
-                  <md-error *ngIf="reg_lastName.hasError('required')">
+                  <mat-error *ngIf="reg_lastName.hasError('required')">
                     Last name is <strong>required</strong>
-                  </md-error>
-                </md-form-field>
+                  </mat-error>
+                </mat-form-field>
               </td>
             </tr>
             <tr>
               <td>
-                <md-form-field class="example-full-width">
-                  <input mdInput
+                <mat-form-field class="example-full-width">
+                  <input matInput
                          placeholder="Username"
                          [(ngModel)]="registerModel.userName"
                          [required]="true"
                          #reg_userName="ngModel"
                          name="reg_userName">
-                  <md-error *ngIf="reg_userName.hasError('required')">
+                  <mat-error *ngIf="reg_userName.hasError('required')">
                     Username is <strong>required</strong>
-                  </md-error>
-                </md-form-field>
+                  </mat-error>
+                </mat-form-field>
               </td>
             </tr>
             <tr>
               <td>
-                <md-form-field class="example-full-width">
-                  <input mdInput
+                <mat-form-field class="example-full-width">
+                  <input matInput
                          placeholder="Email"
                          type="email"
                          [(ngModel)]="registerModel.email"
                          [required]="true"
                          #reg_email="ngModel"
                          name="reg_email">
-                  <md-error *ngIf="reg_email.hasError('pattern')">
+                  <mat-error *ngIf="reg_email.hasError('pattern')">
                     Please enter a valid email address
-                  </md-error>
-                  <md-error *ngIf="reg_email.hasError('required')">
+                  </mat-error>
+                  <mat-error *ngIf="reg_email.hasError('required')">
                     Email is <strong>required</strong>
-                  </md-error>
-                </md-form-field>
+                  </mat-error>
+                </mat-form-field>
               </td>
             </tr>
             <tr>
               <td>
-                <md-form-field class="example-full-width">
-                  <input mdInput
+                <mat-form-field class="example-full-width">
+                  <input matInput
                          placeholder="Password"
                          [(ngModel)]="registerModel.password"
                          [required]="true"
                          type="password"
                          #reg_password="ngModel"
                          name="reg_password">
-                  <md-error *ngIf="reg_password.hasError('required')">
+                  <mat-error *ngIf="reg_password.hasError('required')">
                     Password is <strong>required</strong>
-                  </md-error>
-                </md-form-field>
+                  </mat-error>
+                </mat-form-field>
               </td>
             </tr>
             <tr>
               <td>
-                <md-form-field class="example-full-width">
-                  <input mdInput
+                <mat-form-field class="example-full-width">
+                  <input matInput
                          placeholder="Password"
                          [(ngModel)]="registerModel.confirmPassword"
                          [required]="true"
                          type="password"
                          #reg_confirmPassword="ngModel"
                          name="reg_confirmPassword">
-                  <md-error *ngIf="reg_confirmPassword.hasError('required')">
+                  <mat-error *ngIf="reg_confirmPassword.hasError('required')">
                     First name is <strong>required</strong>
-                  </md-error>
-                  <md-error
+                  </mat-error>
+                  <mat-error
                     *ngIf="(reg_confirmPassword.value && reg_password.value)
                     && (reg_confirmPassword.value !== reg_password.value)">
                     <strong>Passwords do not match</strong>
-                  </md-error>
-                </md-form-field>
+                  </mat-error>
+                </mat-form-field>
               </td>
             </tr>
           </table>
-          <md-error *ngIf="isError">
+          <mat-error *ngIf="isError">
             <strong>Something in the shitty backend has fucked up. Please try again later</strong>
-          </md-error>
+          </mat-error>
         </form>
-      </md-card-content>
-      <md-card-actions>
-        <button md-raised-button color="primary"
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary"
                 [disabled]="!registerForm.form.valid || reg_confirmPassword.value !== reg_password.value"
                 (click)="register()">
           Submit
         </button>
-        <button md-raised-button style="float: right" routerLink="/login">Log in</button>
-      </md-card-actions>
-    </md-card>
+        <button mat-raised-button style="float: right" routerLink="/login">Log in</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>

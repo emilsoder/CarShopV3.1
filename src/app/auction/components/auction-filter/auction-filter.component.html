@@ -18,56 +18,56 @@ w3-animate-opacity"
   <div class="auction-filter-panel-body collapse in"
        id="auction-filter-panel-body">
 
-    <md-expansion-panel>
-      <md-expansion-panel-header>
-        <md-panel-title>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           Colors
-        </md-panel-title>
-      </md-expansion-panel-header>
-      <md-selection-list #col
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-selection-list #col
                          style="max-height: 350px; overflow-y: scroll;">
-        <md-list-option *ngFor="let color of colors"
+        <mat-list-option *ngFor="let color of colors"
                         (click)="setColors(color)">
           {{color}}
-        </md-list-option>
-      </md-selection-list>
-    </md-expansion-panel>
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-expansion-panel>
 
-    <md-expansion-panel style="padding: 0">
-      <md-expansion-panel-header>
-        <md-panel-title>
+    <mat-expansion-panel style="padding: 0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           Makers
-        </md-panel-title>
-      </md-expansion-panel-header>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
 
-      <md-selection-list>
-        <md-list-option [disabled]="brandsChecked.selectedOptions.selected.length <= 0"
+      <mat-selection-list>
+        <mat-list-option [disabled]="brandsChecked.selectedOptions.selected.length <= 0"
                         [selected]="brandsChecked.selectedOptions.selected.length <= 0"
                         (click)="brandsChecked.deselectAll();setBrand('any')"
                         style="padding-right: 17px">
           Any
-        </md-list-option>
-      </md-selection-list>
+        </mat-list-option>
+      </mat-selection-list>
 
-      <md-selection-list #brandsChecked
+      <mat-selection-list #brandsChecked
                          style="max-height: 350px; overflow-y: scroll; padding: 0">
-        <md-list-option *ngFor="let brand of makers"
+        <mat-list-option *ngFor="let brand of makers"
                         (click)="setBrand(brand.toLowerCase())">
           {{brand}}
-        </md-list-option>
+        </mat-list-option>
 
-      </md-selection-list>
+      </mat-selection-list>
 
-    </md-expansion-panel>
+    </mat-expansion-panel>
 
-    <md-expansion-panel>
-      <md-expansion-panel-header>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
         Price
-      </md-expansion-panel-header>
-      <md-selection-list>
-        <md-list-item>
-          <md-form-field class="example-full-width">
-            <input mdInput
+      </mat-expansion-panel-header>
+      <mat-selection-list>
+        <mat-list-item>
+          <mat-form-field class="example-full-width">
+            <input matInput
                    type="number"
                    placeholder="Minimum"
                    step="100"
@@ -76,12 +76,12 @@ w3-animate-opacity"
                    [(ngModel)]="_currentFilter.price.min"
                    value="{{_currentFilter.price.min}}"
                    (change)="notifyDataChanged()">
-            <span mdSuffix> &nbsp; SEK</span>
-          </md-form-field>
-        </md-list-item>
-        <md-list-item>
-          <md-form-field class="example-full-width">
-            <input mdInput
+            <span matSuffix> &nbsp; SEK</span>
+          </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-form-field class="example-full-width">
+            <input matInput
                    type="number"
                    placeholder="Maximum"
                    step="100"
@@ -89,20 +89,20 @@ w3-animate-opacity"
                    [(ngModel)]="_currentFilter.price.max"
                    value="{{_currentFilter.price.max}}"
                    (change)="notifyDataChanged()">
-            <span mdSuffix> &nbsp; SEK</span>
-          </md-form-field>
-        </md-list-item>
-      </md-selection-list>
-    </md-expansion-panel>
+            <span matSuffix> &nbsp; SEK</span>
+          </mat-form-field>
+        </mat-list-item>
+      </mat-selection-list>
+    </mat-expansion-panel>
 
-    <md-expansion-panel>
-      <md-expansion-panel-header>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
         Registration
-      </md-expansion-panel-header>
-      <md-selection-list>
-        <md-list-item>
-          <md-form-field class="example-full-width">
-            <input mdInput
+      </mat-expansion-panel-header>
+      <mat-selection-list>
+        <mat-list-item>
+          <mat-form-field class="example-full-width">
+            <input matInput
                    type="number"
                    min="0"
                    placeholder="From"
@@ -111,11 +111,11 @@ w3-animate-opacity"
                    [(ngModel)]="_currentFilter.year.min"
                    value="{{_currentFilter.year.min}}"
                    (change)="notifyDataChanged()">
-          </md-form-field>
-        </md-list-item>
-        <md-list-item>
-          <md-form-field class="example-full-width">
-            <input mdInput
+          </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-form-field class="example-full-width">
+            <input matInput
                    type="number"
                    min="{{_currentFilter.year.min}}"
                    placeholder="To"
@@ -123,19 +123,19 @@ w3-animate-opacity"
                    [(ngModel)]="_currentFilter.year.max"
                    value="{{_currentFilter.year.max}}"
                    (change)="notifyDataChanged()">
-          </md-form-field>
-        </md-list-item>
-      </md-selection-list>
-    </md-expansion-panel>
+          </mat-form-field>
+        </mat-list-item>
+      </mat-selection-list>
+    </mat-expansion-panel>
 
-    <md-expansion-panel>
-      <md-expansion-panel-header>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
         Mileage
-      </md-expansion-panel-header>
-      <md-selection-list>
-        <md-list-item>
-          <md-form-field class="example-full-width">
-            <input mdInput
+      </mat-expansion-panel-header>
+      <mat-selection-list>
+        <mat-list-item>
+          <mat-form-field class="example-full-width">
+            <input matInput
                    type="number"
                    min="0"
                    placeholder="From"
@@ -144,12 +144,12 @@ w3-animate-opacity"
                    [(ngModel)]="_currentFilter.miles.min"
                    value="{{_currentFilter.miles.min}}"
                    (change)="notifyDataChanged()">
-            <span mdSuffix> &nbsp; miles</span>
-          </md-form-field>
-        </md-list-item>
-        <md-list-item>
-          <md-form-field class="example-full-width">
-            <input mdInput
+            <span matSuffix> &nbsp; miles</span>
+          </mat-form-field>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-form-field class="example-full-width">
+            <input matInput
                    type="number"
                    placeholder="To"
                    step="100"
@@ -157,11 +157,11 @@ w3-animate-opacity"
                    [(ngModel)]="_currentFilter.miles.max"
                    value="{{_currentFilter.miles.max}}"
                    (change)="notifyDataChanged()">
-            <span mdSuffix> &nbsp; miles</span>
-          </md-form-field>
-        </md-list-item>
-      </md-selection-list>
-    </md-expansion-panel>
+            <span matSuffix> &nbsp; miles</span>
+          </mat-form-field>
+        </mat-list-item>
+      </mat-selection-list>
+    </mat-expansion-panel>
 
   </div>
 </div>

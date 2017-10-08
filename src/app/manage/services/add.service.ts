@@ -3,7 +3,7 @@ import {StatusDialogComponent} from "../../layout/dialog/status-dialog.component
 import {ICar} from "../../shared/interfaces/ICar";
 import {model} from "../models/model";
 import {brands} from "../models/makes";
-import {MdDialog} from "@angular/material";
+import {MatDialog} from "@angular/material";
 import {ManageService} from "./manage.service";
 import {Response} from "@angular/http";
 import {Subscription} from "rxjs/Subscription";
@@ -13,7 +13,7 @@ import {IAddCar} from "../models/IAddCar";
 export class AddService {
 
   constructor(public manageService: ManageService,
-              public dialog: MdDialog) {
+              public dialog: MatDialog) {
   }
 
   public formatModels(responseText): string[] {

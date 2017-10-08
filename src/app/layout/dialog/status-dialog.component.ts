@@ -1,5 +1,5 @@
 import {Component, Inject} from '@angular/core';
-import {MD_DIALOG_DATA, MdDialogRef} from "@angular/material";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {DialogViewModel} from "../../shared/viewmodels/DialogViewModel";
 
 @Component({
@@ -10,8 +10,8 @@ import {DialogViewModel} from "../../shared/viewmodels/DialogViewModel";
 export class StatusDialogComponent {
   public objectViewModel: ObjectViewModel[] = [];
 
-  constructor(public dialogRef: MdDialogRef<StatusDialogComponent>,
-              @Inject(MD_DIALOG_DATA)
+  constructor(public dialogRef: MatDialogRef<StatusDialogComponent>,
+              @Inject(MAT_DIALOG_DATA)
               public data: DialogViewModel = new DialogViewModel()) {
     if (data && data.subModel)
       this.convertToObjectArray(data.subModel)

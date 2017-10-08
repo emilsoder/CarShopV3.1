@@ -1,21 +1,21 @@
-<md-card class="w3-row" style="padding: 0; margin-bottom:15px">
+<mat-card class="w3-row" style="padding: 0; margin-bottom:15px">
 
   <div class="w3-third text-center">
     <h1>Cars for sale</h1>
   </div>
   <div class="w3-third" style="padding-right:15px; padding-left: 15px">
-    <md-select placeholder="Sort cars" style="width:100%">
-      <md-option *ngFor="let option of sortOptions" (click)="setSorting(option.field, option.descending)"
+    <mat-select placeholder="Sort cars" style="width:100%">
+      <mat-option *ngFor="let option of sortOptions" (click)="setSorting(option.field, option.descending)"
                  [value]="option.value">
         {{ option.viewValue }}
-      </md-option>
-    </md-select>
+      </mat-option>
+    </mat-select>
   </div>
 
   <div class="w3-third w3-right" style="padding-right:15px; padding-left: 15px; padding-top: 8px;">
-    <md-form-field class="example-full-width">
-      <input mdInput placeholder="Search..." [(ngModel)]="searchArg" (keyup)="changestate()" type="text" value="">
-    </md-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Search..." [(ngModel)]="searchArg" (keyup)="changestate()" type="text" value="">
+    </mat-form-field>
   </div>
-</md-card>
+</mat-card>
 

@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ManageService} from "../../services/manage.service";
 import {ICar} from "../../../shared/interfaces/ICar";
-import {MdDialog} from "@angular/material";
+import {MatDialog} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
 import {UpdateService} from "../../services/update.service";
 
@@ -16,7 +16,7 @@ export class UpdateComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(private manageService: ManageService,
-              public dialog: MdDialog,
+              public dialog: MatDialog,
               private updateService: UpdateService) {
   }
 

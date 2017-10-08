@@ -11,7 +11,7 @@ import {CurrentUserService} from "../../../shared/services/currentuser.service";
 import {IBid} from "../../../shared/interfaces/IBid";
 import * as _ from "lodash";
 import {StatusDialogComponent} from "../../../layout/dialog/status-dialog.component";
-import {MdDialog} from "@angular/material";
+import {MatDialog} from "@angular/material";
 import {Response} from "@angular/http";
 import {LoginDialogComponent} from "../../../authentication/components/login-dialog/login-dialog.component";
 
@@ -39,7 +39,7 @@ export class AuctionDetailsComponent implements OnInit, OnDestroy {
               private imageService: ImageService,
               private bidService: BidService,
               private currentUser: CurrentUserService,
-              public dialog: MdDialog) {
+              public dialog: MatDialog) {
     this.isUserLoggedIn = this.currentUser.isLoggedIn();
   }
 

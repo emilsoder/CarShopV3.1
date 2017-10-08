@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {MdDialog} from "@angular/material";
+import {MatDialog} from "@angular/material";
 import {ICar} from "../../shared/interfaces/ICar";
 import {UpdateDialogComponent} from "../components/update-dialog/update-dialog.component";
 import {ManageService} from "./manage.service";
@@ -11,7 +11,7 @@ import {StatusDialogComponent} from "../../layout/dialog/status-dialog.component
 export class UpdateService {
 
   constructor(public manageService: ManageService,
-              public dialog: MdDialog) {
+              public dialog: MatDialog) {
   }
 
   public openDialog(_car: ICar): Subscription {
